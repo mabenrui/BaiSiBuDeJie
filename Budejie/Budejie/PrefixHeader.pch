@@ -1,0 +1,34 @@
+//
+//  PrefixHeader.pch
+//  Budejie
+//
+//  Created by Max on 16/2/27.
+//  Copyright © 2016年 Max. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#ifdef DEBUG
+#define LLog(...) NSLog(__VA_ARGS__)
+#else
+#define LLog(...)
+#endif
+
+#define LogFunc LLog(@"%s", __func__)
+
+#define RGBColor(r,g,b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
+#define GlobalBg RGBColor(233, 233, 233)
+
+#define kWidth [UIScreen mainScreen].bounds.size.width
+#define kHeight [UIScreen mainScreen].bounds.size.height
+
+#define BaseApi @"http://api.budejie.com/api/api_open.php"
+
+
+#import "UIView+FrameExtension.h"
+#import "UIBarButtonItem+Extension.h"
+
+#import "MaxConst.h"
+
+#endif /* PrefixHeader_pch */

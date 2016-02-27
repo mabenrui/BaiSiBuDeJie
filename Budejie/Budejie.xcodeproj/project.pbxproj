@@ -1,0 +1,722 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		18011016C6ECB9B61C72E2A2 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F6564E83B2FCB17347FBCF23 /* libPods.a */; };
+		509FA3031C814F530005ACDA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 509FA3021C814F530005ACDA /* main.m */; };
+		509FA3061C814F530005ACDA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 509FA3051C814F530005ACDA /* AppDelegate.m */; };
+		509FA30E1C814F530005ACDA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 509FA30D1C814F530005ACDA /* Assets.xcassets */; };
+		509FA3701C8152630005ACDA /* NSDate+MaxRelativeTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 509FA31C1C8152630005ACDA /* NSDate+MaxRelativeTime.m */; };
+		509FA3711C8152630005ACDA /* UIBarButtonItem+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 509FA31E1C8152630005ACDA /* UIBarButtonItem+Extension.m */; };
+		509FA3721C8152630005ACDA /* UIView+FrameExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 509FA3201C8152630005ACDA /* UIView+FrameExtension.m */; };
+		509FA3731C8152630005ACDA /* MaxEssenceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 509FA3241C8152630005ACDA /* MaxEssenceViewController.m */; };
+		509FA3741C8152630005ACDA /* MaxRecommendTagController.m in Sources */ = {isa = PBXBuildFile; fileRef = 509FA3261C8152630005ACDA /* MaxRecommendTagController.m */; };
+		509FA3751C8152630005ACDA /* MaxShowPrictureController.m in Sources */ = {isa = PBXBuildFile; fileRef = 509FA3281C8152630005ACDA /* MaxShowPrictureController.m */; };
+		509FA3761C8152630005ACDA /* MaxShowPrictureController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 509FA3291C8152630005ACDA /* MaxShowPrictureController.xib */; };
+		509FA3771C8152630005ACDA /* MaxTopicController.m in Sources */ = {isa = PBXBuildFile; fileRef = 509FA32B1C8152630005ACDA /* MaxTopicController.m */; };
+		509FA3781C8152630005ACDA /* MaxRecommendTagModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 509FA32E1C8152630005ACDA /* MaxRecommendTagModel.m */; };
+		509FA3791C8152630005ACDA /* MaxTopicModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 509FA3301C8152630005ACDA /* MaxTopicModel.m */; };
+		509FA37A1C8152630005ACDA /* MaxRecommendTagCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 509FA3331C8152630005ACDA /* MaxRecommendTagCell.m */; };
+		509FA37B1C8152630005ACDA /* MaxRecommendTagCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 509FA3341C8152630005ACDA /* MaxRecommendTagCell.xib */; };
+		509FA37C1C8152630005ACDA /* MaxTopicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 509FA3361C8152630005ACDA /* MaxTopicCell.m */; };
+		509FA37D1C8152630005ACDA /* MaxTopicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 509FA3371C8152630005ACDA /* MaxTopicCell.xib */; };
+		509FA37E1C8152630005ACDA /* MaxTopicPictureView.m in Sources */ = {isa = PBXBuildFile; fileRef = 509FA3391C8152630005ACDA /* MaxTopicPictureView.m */; };
+		509FA37F1C8152630005ACDA /* MaxTopicPictureView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 509FA33A1C8152630005ACDA /* MaxTopicPictureView.xib */; };
+		509FA3801C8152630005ACDA /* MaxFriendTrendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 509FA33E1C8152630005ACDA /* MaxFriendTrendsViewController.m */; };
+		509FA3811C8152630005ACDA /* MaxFriendTrendsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 509FA33F1C8152630005ACDA /* MaxFriendTrendsViewController.xib */; };
+		509FA3821C8152630005ACDA /* MaxLoginRegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 509FA3411C8152630005ACDA /* MaxLoginRegisterController.m */; };
+		509FA3831C8152630005ACDA /* MaxLoginRegisterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 509FA3421C8152630005ACDA /* MaxLoginRegisterController.xib */; };
+		509FA3841C8152630005ACDA /* MaxRecommendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 509FA3441C8152630005ACDA /* MaxRecommendViewController.m */; };
+		509FA3851C8152630005ACDA /* MaxRecommendViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 509FA3451C8152630005ACDA /* MaxRecommendViewController.xib */; };
+		509FA3861C8152630005ACDA /* MaxRecommendTypeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 509FA3481C8152630005ACDA /* MaxRecommendTypeModel.m */; };
+		509FA3871C8152630005ACDA /* MaxRecommendUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 509FA34A1C8152630005ACDA /* MaxRecommendUserModel.m */; };
+		509FA3881C8152630005ACDA /* MaxRecommendTypeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 509FA34D1C8152630005ACDA /* MaxRecommendTypeCell.m */; };
+		509FA3891C8152630005ACDA /* MaxRecommendTypeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 509FA34E1C8152630005ACDA /* MaxRecommendTypeCell.xib */; };
+		509FA38A1C8152630005ACDA /* MaxRecommendUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 509FA3501C8152630005ACDA /* MaxRecommendUserCell.m */; };
+		509FA38B1C8152630005ACDA /* MaxRecommendUserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 509FA3511C8152630005ACDA /* MaxRecommendUserCell.xib */; };
+		509FA38C1C8152630005ACDA /* MaxMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 509FA3551C8152630005ACDA /* MaxMeViewController.m */; };
+		509FA38D1C8152630005ACDA /* MaxNewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 509FA35B1C8152630005ACDA /* MaxNewViewController.m */; };
+		509FA38E1C8152630005ACDA /* Foundation+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = 509FA35F1C8152630005ACDA /* Foundation+Log.m */; };
+		509FA38F1C8152630005ACDA /* MaxConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 509FA3611C8152630005ACDA /* MaxConst.m */; };
+		509FA3901C8152630005ACDA /* MaxNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 509FA3631C8152630005ACDA /* MaxNavigationController.m */; };
+		509FA3911C8152630005ACDA /* MaxPushGuideView.m in Sources */ = {isa = PBXBuildFile; fileRef = 509FA3651C8152630005ACDA /* MaxPushGuideView.m */; };
+		509FA3921C8152630005ACDA /* MaxPushGuideView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 509FA3661C8152630005ACDA /* MaxPushGuideView.xib */; };
+		509FA3931C8152630005ACDA /* MaxTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 509FA3681C8152630005ACDA /* MaxTabBar.m */; };
+		509FA3941C8152630005ACDA /* MaxTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 509FA36A1C8152630005ACDA /* MaxTabBarController.m */; };
+		509FA3951C8152630005ACDA /* MaxTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 509FA36C1C8152630005ACDA /* MaxTextField.m */; };
+		509FA3961C8152630005ACDA /* MaxVerticalButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 509FA36E1C8152630005ACDA /* MaxVerticalButton.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		509FA2FE1C814F530005ACDA /* Budejie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Budejie.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		509FA3021C814F530005ACDA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		509FA3041C814F530005ACDA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		509FA3051C814F530005ACDA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		509FA30D1C814F530005ACDA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		509FA3121C814F530005ACDA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		509FA3181C8151A90005ACDA /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		509FA31B1C8152630005ACDA /* NSDate+MaxRelativeTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+MaxRelativeTime.h"; sourceTree = "<group>"; };
+		509FA31C1C8152630005ACDA /* NSDate+MaxRelativeTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+MaxRelativeTime.m"; sourceTree = "<group>"; };
+		509FA31D1C8152630005ACDA /* UIBarButtonItem+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Extension.h"; sourceTree = "<group>"; };
+		509FA31E1C8152630005ACDA /* UIBarButtonItem+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+Extension.m"; sourceTree = "<group>"; };
+		509FA31F1C8152630005ACDA /* UIView+FrameExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FrameExtension.h"; sourceTree = "<group>"; };
+		509FA3201C8152630005ACDA /* UIView+FrameExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FrameExtension.m"; sourceTree = "<group>"; };
+		509FA3231C8152630005ACDA /* MaxEssenceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaxEssenceViewController.h; sourceTree = "<group>"; };
+		509FA3241C8152630005ACDA /* MaxEssenceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaxEssenceViewController.m; sourceTree = "<group>"; };
+		509FA3251C8152630005ACDA /* MaxRecommendTagController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaxRecommendTagController.h; sourceTree = "<group>"; };
+		509FA3261C8152630005ACDA /* MaxRecommendTagController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaxRecommendTagController.m; sourceTree = "<group>"; };
+		509FA3271C8152630005ACDA /* MaxShowPrictureController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaxShowPrictureController.h; sourceTree = "<group>"; };
+		509FA3281C8152630005ACDA /* MaxShowPrictureController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaxShowPrictureController.m; sourceTree = "<group>"; };
+		509FA3291C8152630005ACDA /* MaxShowPrictureController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MaxShowPrictureController.xib; sourceTree = "<group>"; };
+		509FA32A1C8152630005ACDA /* MaxTopicController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaxTopicController.h; sourceTree = "<group>"; };
+		509FA32B1C8152630005ACDA /* MaxTopicController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaxTopicController.m; sourceTree = "<group>"; };
+		509FA32D1C8152630005ACDA /* MaxRecommendTagModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaxRecommendTagModel.h; sourceTree = "<group>"; };
+		509FA32E1C8152630005ACDA /* MaxRecommendTagModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaxRecommendTagModel.m; sourceTree = "<group>"; };
+		509FA32F1C8152630005ACDA /* MaxTopicModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaxTopicModel.h; sourceTree = "<group>"; };
+		509FA3301C8152630005ACDA /* MaxTopicModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaxTopicModel.m; sourceTree = "<group>"; };
+		509FA3321C8152630005ACDA /* MaxRecommendTagCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaxRecommendTagCell.h; sourceTree = "<group>"; };
+		509FA3331C8152630005ACDA /* MaxRecommendTagCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaxRecommendTagCell.m; sourceTree = "<group>"; };
+		509FA3341C8152630005ACDA /* MaxRecommendTagCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MaxRecommendTagCell.xib; sourceTree = "<group>"; };
+		509FA3351C8152630005ACDA /* MaxTopicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaxTopicCell.h; sourceTree = "<group>"; };
+		509FA3361C8152630005ACDA /* MaxTopicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaxTopicCell.m; sourceTree = "<group>"; };
+		509FA3371C8152630005ACDA /* MaxTopicCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MaxTopicCell.xib; sourceTree = "<group>"; };
+		509FA3381C8152630005ACDA /* MaxTopicPictureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaxTopicPictureView.h; sourceTree = "<group>"; };
+		509FA3391C8152630005ACDA /* MaxTopicPictureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaxTopicPictureView.m; sourceTree = "<group>"; };
+		509FA33A1C8152630005ACDA /* MaxTopicPictureView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MaxTopicPictureView.xib; sourceTree = "<group>"; };
+		509FA33D1C8152630005ACDA /* MaxFriendTrendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaxFriendTrendsViewController.h; sourceTree = "<group>"; };
+		509FA33E1C8152630005ACDA /* MaxFriendTrendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaxFriendTrendsViewController.m; sourceTree = "<group>"; };
+		509FA33F1C8152630005ACDA /* MaxFriendTrendsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MaxFriendTrendsViewController.xib; sourceTree = "<group>"; };
+		509FA3401C8152630005ACDA /* MaxLoginRegisterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaxLoginRegisterController.h; sourceTree = "<group>"; };
+		509FA3411C8152630005ACDA /* MaxLoginRegisterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaxLoginRegisterController.m; sourceTree = "<group>"; };
+		509FA3421C8152630005ACDA /* MaxLoginRegisterController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MaxLoginRegisterController.xib; sourceTree = "<group>"; };
+		509FA3431C8152630005ACDA /* MaxRecommendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaxRecommendViewController.h; sourceTree = "<group>"; };
+		509FA3441C8152630005ACDA /* MaxRecommendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaxRecommendViewController.m; sourceTree = "<group>"; };
+		509FA3451C8152630005ACDA /* MaxRecommendViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MaxRecommendViewController.xib; sourceTree = "<group>"; };
+		509FA3471C8152630005ACDA /* MaxRecommendTypeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaxRecommendTypeModel.h; sourceTree = "<group>"; };
+		509FA3481C8152630005ACDA /* MaxRecommendTypeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaxRecommendTypeModel.m; sourceTree = "<group>"; };
+		509FA3491C8152630005ACDA /* MaxRecommendUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaxRecommendUserModel.h; sourceTree = "<group>"; };
+		509FA34A1C8152630005ACDA /* MaxRecommendUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaxRecommendUserModel.m; sourceTree = "<group>"; };
+		509FA34C1C8152630005ACDA /* MaxRecommendTypeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaxRecommendTypeCell.h; sourceTree = "<group>"; };
+		509FA34D1C8152630005ACDA /* MaxRecommendTypeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaxRecommendTypeCell.m; sourceTree = "<group>"; };
+		509FA34E1C8152630005ACDA /* MaxRecommendTypeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MaxRecommendTypeCell.xib; sourceTree = "<group>"; };
+		509FA34F1C8152630005ACDA /* MaxRecommendUserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaxRecommendUserCell.h; sourceTree = "<group>"; };
+		509FA3501C8152630005ACDA /* MaxRecommendUserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaxRecommendUserCell.m; sourceTree = "<group>"; };
+		509FA3511C8152630005ACDA /* MaxRecommendUserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MaxRecommendUserCell.xib; sourceTree = "<group>"; };
+		509FA3541C8152630005ACDA /* MaxMeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaxMeViewController.h; sourceTree = "<group>"; };
+		509FA3551C8152630005ACDA /* MaxMeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaxMeViewController.m; sourceTree = "<group>"; };
+		509FA35A1C8152630005ACDA /* MaxNewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaxNewViewController.h; sourceTree = "<group>"; };
+		509FA35B1C8152630005ACDA /* MaxNewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaxNewViewController.m; sourceTree = "<group>"; };
+		509FA35F1C8152630005ACDA /* Foundation+Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Foundation+Log.m"; sourceTree = "<group>"; };
+		509FA3601C8152630005ACDA /* MaxConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaxConst.h; sourceTree = "<group>"; };
+		509FA3611C8152630005ACDA /* MaxConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaxConst.m; sourceTree = "<group>"; };
+		509FA3621C8152630005ACDA /* MaxNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaxNavigationController.h; sourceTree = "<group>"; };
+		509FA3631C8152630005ACDA /* MaxNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaxNavigationController.m; sourceTree = "<group>"; };
+		509FA3641C8152630005ACDA /* MaxPushGuideView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaxPushGuideView.h; sourceTree = "<group>"; };
+		509FA3651C8152630005ACDA /* MaxPushGuideView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaxPushGuideView.m; sourceTree = "<group>"; };
+		509FA3661C8152630005ACDA /* MaxPushGuideView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MaxPushGuideView.xib; sourceTree = "<group>"; };
+		509FA3671C8152630005ACDA /* MaxTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaxTabBar.h; sourceTree = "<group>"; };
+		509FA3681C8152630005ACDA /* MaxTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaxTabBar.m; sourceTree = "<group>"; };
+		509FA3691C8152630005ACDA /* MaxTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaxTabBarController.h; sourceTree = "<group>"; };
+		509FA36A1C8152630005ACDA /* MaxTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaxTabBarController.m; sourceTree = "<group>"; };
+		509FA36B1C8152630005ACDA /* MaxTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaxTextField.h; sourceTree = "<group>"; };
+		509FA36C1C8152630005ACDA /* MaxTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaxTextField.m; sourceTree = "<group>"; };
+		509FA36D1C8152630005ACDA /* MaxVerticalButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaxVerticalButton.h; sourceTree = "<group>"; };
+		509FA36E1C8152630005ACDA /* MaxVerticalButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaxVerticalButton.m; sourceTree = "<group>"; };
+		509FA36F1C8152630005ACDA /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PrefixHeader.pch; path = Class/PrefixHeader.pch; sourceTree = "<group>"; };
+		81AE9F67E71F4A4189F84511 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		941E0D4CC628038BA5B7760F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		F6564E83B2FCB17347FBCF23 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		509FA2FB1C814F530005ACDA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18011016C6ECB9B61C72E2A2 /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		093785D71DC02ABDD6302044 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				941E0D4CC628038BA5B7760F /* Pods.debug.xcconfig */,
+				81AE9F67E71F4A4189F84511 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		509FA2F51C814F530005ACDA = {
+			isa = PBXGroup;
+			children = (
+				509FA3001C814F530005ACDA /* Budejie */,
+				509FA2FF1C814F530005ACDA /* Products */,
+				093785D71DC02ABDD6302044 /* Pods */,
+				A195B1745CCB9F198434D15C /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		509FA2FF1C814F530005ACDA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				509FA2FE1C814F530005ACDA /* Budejie.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		509FA3001C814F530005ACDA /* Budejie */ = {
+			isa = PBXGroup;
+			children = (
+				509FA3191C8152630005ACDA /* Class */,
+				509FA3041C814F530005ACDA /* AppDelegate.h */,
+				509FA3051C814F530005ACDA /* AppDelegate.m */,
+				509FA36F1C8152630005ACDA /* PrefixHeader.pch */,
+				509FA3011C814F530005ACDA /* Supporting Files */,
+			);
+			path = Budejie;
+			sourceTree = "<group>";
+		};
+		509FA3011C814F530005ACDA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				509FA3021C814F530005ACDA /* main.m */,
+				509FA30D1C814F530005ACDA /* Assets.xcassets */,
+				509FA3121C814F530005ACDA /* Info.plist */,
+				509FA3181C8151A90005ACDA /* PrefixHeader.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		509FA3191C8152630005ACDA /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				509FA31A1C8152630005ACDA /* Category */,
+				509FA3211C8152630005ACDA /* Essence */,
+				509FA33B1C8152630005ACDA /* FriendTrends */,
+				509FA3521C8152630005ACDA /* Me */,
+				509FA3581C8152630005ACDA /* New */,
+				509FA35E1C8152630005ACDA /* Other */,
+			);
+			path = Class;
+			sourceTree = "<group>";
+		};
+		509FA31A1C8152630005ACDA /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				509FA31B1C8152630005ACDA /* NSDate+MaxRelativeTime.h */,
+				509FA31C1C8152630005ACDA /* NSDate+MaxRelativeTime.m */,
+				509FA31D1C8152630005ACDA /* UIBarButtonItem+Extension.h */,
+				509FA31E1C8152630005ACDA /* UIBarButtonItem+Extension.m */,
+				509FA31F1C8152630005ACDA /* UIView+FrameExtension.h */,
+				509FA3201C8152630005ACDA /* UIView+FrameExtension.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		509FA3211C8152630005ACDA /* Essence */ = {
+			isa = PBXGroup;
+			children = (
+				509FA3221C8152630005ACDA /* Controller */,
+				509FA32C1C8152630005ACDA /* Model */,
+				509FA3311C8152630005ACDA /* View */,
+			);
+			path = Essence;
+			sourceTree = "<group>";
+		};
+		509FA3221C8152630005ACDA /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				509FA3231C8152630005ACDA /* MaxEssenceViewController.h */,
+				509FA3241C8152630005ACDA /* MaxEssenceViewController.m */,
+				509FA3251C8152630005ACDA /* MaxRecommendTagController.h */,
+				509FA3261C8152630005ACDA /* MaxRecommendTagController.m */,
+				509FA3271C8152630005ACDA /* MaxShowPrictureController.h */,
+				509FA3281C8152630005ACDA /* MaxShowPrictureController.m */,
+				509FA3291C8152630005ACDA /* MaxShowPrictureController.xib */,
+				509FA32A1C8152630005ACDA /* MaxTopicController.h */,
+				509FA32B1C8152630005ACDA /* MaxTopicController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		509FA32C1C8152630005ACDA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				509FA32D1C8152630005ACDA /* MaxRecommendTagModel.h */,
+				509FA32E1C8152630005ACDA /* MaxRecommendTagModel.m */,
+				509FA32F1C8152630005ACDA /* MaxTopicModel.h */,
+				509FA3301C8152630005ACDA /* MaxTopicModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		509FA3311C8152630005ACDA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				509FA3321C8152630005ACDA /* MaxRecommendTagCell.h */,
+				509FA3331C8152630005ACDA /* MaxRecommendTagCell.m */,
+				509FA3341C8152630005ACDA /* MaxRecommendTagCell.xib */,
+				509FA3351C8152630005ACDA /* MaxTopicCell.h */,
+				509FA3361C8152630005ACDA /* MaxTopicCell.m */,
+				509FA3371C8152630005ACDA /* MaxTopicCell.xib */,
+				509FA3381C8152630005ACDA /* MaxTopicPictureView.h */,
+				509FA3391C8152630005ACDA /* MaxTopicPictureView.m */,
+				509FA33A1C8152630005ACDA /* MaxTopicPictureView.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		509FA33B1C8152630005ACDA /* FriendTrends */ = {
+			isa = PBXGroup;
+			children = (
+				509FA33C1C8152630005ACDA /* Controller */,
+				509FA3461C8152630005ACDA /* Model */,
+				509FA34B1C8152630005ACDA /* View */,
+			);
+			path = FriendTrends;
+			sourceTree = "<group>";
+		};
+		509FA33C1C8152630005ACDA /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				509FA33D1C8152630005ACDA /* MaxFriendTrendsViewController.h */,
+				509FA33E1C8152630005ACDA /* MaxFriendTrendsViewController.m */,
+				509FA33F1C8152630005ACDA /* MaxFriendTrendsViewController.xib */,
+				509FA3401C8152630005ACDA /* MaxLoginRegisterController.h */,
+				509FA3411C8152630005ACDA /* MaxLoginRegisterController.m */,
+				509FA3421C8152630005ACDA /* MaxLoginRegisterController.xib */,
+				509FA3431C8152630005ACDA /* MaxRecommendViewController.h */,
+				509FA3441C8152630005ACDA /* MaxRecommendViewController.m */,
+				509FA3451C8152630005ACDA /* MaxRecommendViewController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		509FA3461C8152630005ACDA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				509FA3471C8152630005ACDA /* MaxRecommendTypeModel.h */,
+				509FA3481C8152630005ACDA /* MaxRecommendTypeModel.m */,
+				509FA3491C8152630005ACDA /* MaxRecommendUserModel.h */,
+				509FA34A1C8152630005ACDA /* MaxRecommendUserModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		509FA34B1C8152630005ACDA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				509FA34C1C8152630005ACDA /* MaxRecommendTypeCell.h */,
+				509FA34D1C8152630005ACDA /* MaxRecommendTypeCell.m */,
+				509FA34E1C8152630005ACDA /* MaxRecommendTypeCell.xib */,
+				509FA34F1C8152630005ACDA /* MaxRecommendUserCell.h */,
+				509FA3501C8152630005ACDA /* MaxRecommendUserCell.m */,
+				509FA3511C8152630005ACDA /* MaxRecommendUserCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		509FA3521C8152630005ACDA /* Me */ = {
+			isa = PBXGroup;
+			children = (
+				509FA3531C8152630005ACDA /* Controller */,
+				509FA3561C8152630005ACDA /* Model */,
+				509FA3571C8152630005ACDA /* View */,
+			);
+			path = Me;
+			sourceTree = "<group>";
+		};
+		509FA3531C8152630005ACDA /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				509FA3541C8152630005ACDA /* MaxMeViewController.h */,
+				509FA3551C8152630005ACDA /* MaxMeViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		509FA3561C8152630005ACDA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		509FA3571C8152630005ACDA /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		509FA3581C8152630005ACDA /* New */ = {
+			isa = PBXGroup;
+			children = (
+				509FA3591C8152630005ACDA /* Controller */,
+				509FA35C1C8152630005ACDA /* Model */,
+				509FA35D1C8152630005ACDA /* View */,
+			);
+			path = New;
+			sourceTree = "<group>";
+		};
+		509FA3591C8152630005ACDA /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				509FA35A1C8152630005ACDA /* MaxNewViewController.h */,
+				509FA35B1C8152630005ACDA /* MaxNewViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		509FA35C1C8152630005ACDA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		509FA35D1C8152630005ACDA /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		509FA35E1C8152630005ACDA /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				509FA35F1C8152630005ACDA /* Foundation+Log.m */,
+				509FA3601C8152630005ACDA /* MaxConst.h */,
+				509FA3611C8152630005ACDA /* MaxConst.m */,
+				509FA3621C8152630005ACDA /* MaxNavigationController.h */,
+				509FA3631C8152630005ACDA /* MaxNavigationController.m */,
+				509FA3641C8152630005ACDA /* MaxPushGuideView.h */,
+				509FA3651C8152630005ACDA /* MaxPushGuideView.m */,
+				509FA3661C8152630005ACDA /* MaxPushGuideView.xib */,
+				509FA3671C8152630005ACDA /* MaxTabBar.h */,
+				509FA3681C8152630005ACDA /* MaxTabBar.m */,
+				509FA3691C8152630005ACDA /* MaxTabBarController.h */,
+				509FA36A1C8152630005ACDA /* MaxTabBarController.m */,
+				509FA36B1C8152630005ACDA /* MaxTextField.h */,
+				509FA36C1C8152630005ACDA /* MaxTextField.m */,
+				509FA36D1C8152630005ACDA /* MaxVerticalButton.h */,
+				509FA36E1C8152630005ACDA /* MaxVerticalButton.m */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		A195B1745CCB9F198434D15C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F6564E83B2FCB17347FBCF23 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		509FA2FD1C814F530005ACDA /* Budejie */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 509FA3151C814F530005ACDA /* Build configuration list for PBXNativeTarget "Budejie" */;
+			buildPhases = (
+				35F8864C363ACE2A47D94BAA /* Check Pods Manifest.lock */,
+				509FA2FA1C814F530005ACDA /* Sources */,
+				509FA2FB1C814F530005ACDA /* Frameworks */,
+				509FA2FC1C814F530005ACDA /* Resources */,
+				0532A4214BA01ED53186EA03 /* Embed Pods Frameworks */,
+				DD5AB4EC87E32133EC4B47E0 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Budejie;
+			productName = Budejie;
+			productReference = 509FA2FE1C814F530005ACDA /* Budejie.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		509FA2F61C814F530005ACDA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = Max;
+				TargetAttributes = {
+					509FA2FD1C814F530005ACDA = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
+				};
+			};
+			buildConfigurationList = 509FA2F91C814F530005ACDA /* Build configuration list for PBXProject "Budejie" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 509FA2F51C814F530005ACDA;
+			productRefGroup = 509FA2FF1C814F530005ACDA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				509FA2FD1C814F530005ACDA /* Budejie */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		509FA2FC1C814F530005ACDA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				509FA37B1C8152630005ACDA /* MaxRecommendTagCell.xib in Resources */,
+				509FA30E1C814F530005ACDA /* Assets.xcassets in Resources */,
+				509FA3891C8152630005ACDA /* MaxRecommendTypeCell.xib in Resources */,
+				509FA37D1C8152630005ACDA /* MaxTopicCell.xib in Resources */,
+				509FA3831C8152630005ACDA /* MaxLoginRegisterController.xib in Resources */,
+				509FA37F1C8152630005ACDA /* MaxTopicPictureView.xib in Resources */,
+				509FA38B1C8152630005ACDA /* MaxRecommendUserCell.xib in Resources */,
+				509FA3761C8152630005ACDA /* MaxShowPrictureController.xib in Resources */,
+				509FA3851C8152630005ACDA /* MaxRecommendViewController.xib in Resources */,
+				509FA3921C8152630005ACDA /* MaxPushGuideView.xib in Resources */,
+				509FA3811C8152630005ACDA /* MaxFriendTrendsViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0532A4214BA01ED53186EA03 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		35F8864C363ACE2A47D94BAA /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		DD5AB4EC87E32133EC4B47E0 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		509FA2FA1C814F530005ACDA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				509FA3841C8152630005ACDA /* MaxRecommendViewController.m in Sources */,
+				509FA3801C8152630005ACDA /* MaxFriendTrendsViewController.m in Sources */,
+				509FA37A1C8152630005ACDA /* MaxRecommendTagCell.m in Sources */,
+				509FA3711C8152630005ACDA /* UIBarButtonItem+Extension.m in Sources */,
+				509FA38F1C8152630005ACDA /* MaxConst.m in Sources */,
+				509FA3701C8152630005ACDA /* NSDate+MaxRelativeTime.m in Sources */,
+				509FA3951C8152630005ACDA /* MaxTextField.m in Sources */,
+				509FA3781C8152630005ACDA /* MaxRecommendTagModel.m in Sources */,
+				509FA3061C814F530005ACDA /* AppDelegate.m in Sources */,
+				509FA3961C8152630005ACDA /* MaxVerticalButton.m in Sources */,
+				509FA3721C8152630005ACDA /* UIView+FrameExtension.m in Sources */,
+				509FA3771C8152630005ACDA /* MaxTopicController.m in Sources */,
+				509FA38C1C8152630005ACDA /* MaxMeViewController.m in Sources */,
+				509FA38A1C8152630005ACDA /* MaxRecommendUserCell.m in Sources */,
+				509FA3871C8152630005ACDA /* MaxRecommendUserModel.m in Sources */,
+				509FA3861C8152630005ACDA /* MaxRecommendTypeModel.m in Sources */,
+				509FA3901C8152630005ACDA /* MaxNavigationController.m in Sources */,
+				509FA3731C8152630005ACDA /* MaxEssenceViewController.m in Sources */,
+				509FA3931C8152630005ACDA /* MaxTabBar.m in Sources */,
+				509FA38D1C8152630005ACDA /* MaxNewViewController.m in Sources */,
+				509FA37E1C8152630005ACDA /* MaxTopicPictureView.m in Sources */,
+				509FA3031C814F530005ACDA /* main.m in Sources */,
+				509FA37C1C8152630005ACDA /* MaxTopicCell.m in Sources */,
+				509FA3911C8152630005ACDA /* MaxPushGuideView.m in Sources */,
+				509FA3941C8152630005ACDA /* MaxTabBarController.m in Sources */,
+				509FA3791C8152630005ACDA /* MaxTopicModel.m in Sources */,
+				509FA3741C8152630005ACDA /* MaxRecommendTagController.m in Sources */,
+				509FA3751C8152630005ACDA /* MaxShowPrictureController.m in Sources */,
+				509FA3821C8152630005ACDA /* MaxLoginRegisterController.m in Sources */,
+				509FA3881C8152630005ACDA /* MaxRecommendTypeCell.m in Sources */,
+				509FA38E1C8152630005ACDA /* Foundation+Log.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		509FA3131C814F530005ACDA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		509FA3141C814F530005ACDA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		509FA3161C814F530005ACDA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 941E0D4CC628038BA5B7760F /* Pods.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/Budejie/PrefixHeader.pch";
+				INFOPLIST_FILE = Budejie/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mabenrui.Budejie;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		509FA3171C814F530005ACDA /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 81AE9F67E71F4A4189F84511 /* Pods.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/Budejie/PrefixHeader.pch";
+				INFOPLIST_FILE = Budejie/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mabenrui.Budejie;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		509FA2F91C814F530005ACDA /* Build configuration list for PBXProject "Budejie" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				509FA3131C814F530005ACDA /* Debug */,
+				509FA3141C814F530005ACDA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		509FA3151C814F530005ACDA /* Build configuration list for PBXNativeTarget "Budejie" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				509FA3161C814F530005ACDA /* Debug */,
+				509FA3171C814F530005ACDA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 509FA2F61C814F530005ACDA /* Project object */;
+}
