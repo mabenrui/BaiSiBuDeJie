@@ -41,12 +41,19 @@
     //显示推送指引
     [MaxPushGuideView show];
     
-    //    [KMCGeigerCounter sharedGeigerCounter].enabled = YES;
-    
+    //设置3DTouch
+    [self setup3DTouch];
 }
 
-- (void)touch{
-    UIApplicationShortcutItem *item1;
+- (void)setup3DTouch{
+    UIApplicationShortcutItem *firstItem = [[UIApplicationShortcutItem alloc] initWithType:@"First" localizedTitle:@"第一个菜单" localizedSubtitle:@"这是子标题" icon:[UIApplicationShortcutIcon iconWithType:UIApplicationShortcutIconTypeLove] userInfo:nil];
+    
+    UIApplicationShortcutItem *secondItem = [[UIApplicationShortcutItem alloc] initWithType:@"Second" localizedTitle:@"第二个菜单" localizedSubtitle:nil icon:nil userInfo:nil];
+    
+    [[UIApplication sharedApplication] setShortcutItems:@[firstItem, secondItem]];
+    
+    //点击不同的按钮, 会触发application:performActionForShortcutItem:completionHandler:
+
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -71,10 +78,15 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
-- (void)applicationDidReceiveMemoryWarning:(UIApplication *)application{
-//    SDWebImageManager *manager = [SDWebImageManager sharedManager];
-//    [manager cancelAll];
-//    [manager.imageCache clearMemory];
+- (void)application:(UIApplication *)application performActionForShortcutItem:(nonnull UIApplicationShortcutItem *)shortcutItem completionHandler:(nonnull void (^)(BOOL))completionHandler
+{
+    NSString *type = [shortcutItem type];
+    if ([type isEqualToString:@"First"]) {
+        
+        
+    }else {
+        LLog(@"%@", type);
+    }
 }
 
 @end
