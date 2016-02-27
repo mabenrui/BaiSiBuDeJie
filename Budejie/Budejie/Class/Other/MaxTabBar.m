@@ -7,6 +7,7 @@
 //
 
 #import "MaxTabBar.h"
+#import "MaxPublishController.h"
 
 @interface MaxTabBar ()
 
@@ -25,6 +26,7 @@
         UIButton *pulish = [UIButton buttonWithType:UIButtonTypeCustom];
         [pulish setBackgroundImage:[UIImage imageNamed:@"tabBar_publish_icon"] forState:UIControlStateNormal];
         [pulish setBackgroundImage:[UIImage imageNamed:@"tabBar_publish_click_icon"] forState:UIControlStateHighlighted];
+        [pulish addTarget:self action:@selector(pulishClick) forControlEvents:UIControlEventTouchUpInside];
         pulish.size = pulish.currentBackgroundImage.size;//没有直接设置frame,是因为在init里面frame可能出错
         
         [self addSubview:pulish];
@@ -34,6 +36,10 @@
     }
     
     return self;
+}
+- (void)pulishClick{
+    MaxPublishController *publish = [MaxPublishController new];
+    [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:publish animated:NO completion:nil];
 }
 
 - (void)layoutSubviews{

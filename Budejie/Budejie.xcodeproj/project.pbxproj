@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		18011016C6ECB9B61C72E2A2 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F6564E83B2FCB17347FBCF23 /* libPods.a */; };
+		502446201C81A894000C1919 /* MaxPublishController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5024461E1C81A894000C1919 /* MaxPublishController.m */; };
+		502446211C81A894000C1919 /* MaxPublishController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5024461F1C81A894000C1919 /* MaxPublishController.xib */; };
 		509FA3031C814F530005ACDA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 509FA3021C814F530005ACDA /* main.m */; };
 		509FA3061C814F530005ACDA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 509FA3051C814F530005ACDA /* AppDelegate.m */; };
 		509FA30E1C814F530005ACDA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 509FA30D1C814F530005ACDA /* Assets.xcassets */; };
@@ -53,6 +55,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5024461D1C81A894000C1919 /* MaxPublishController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaxPublishController.h; sourceTree = "<group>"; };
+		5024461E1C81A894000C1919 /* MaxPublishController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaxPublishController.m; sourceTree = "<group>"; };
+		5024461F1C81A894000C1919 /* MaxPublishController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MaxPublishController.xib; sourceTree = "<group>"; };
 		509FA2FE1C814F530005ACDA /* Budejie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Budejie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		509FA3021C814F530005ACDA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		509FA3041C814F530005ACDA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -409,6 +414,9 @@
 				509FA36C1C8152630005ACDA /* MaxTextField.m */,
 				509FA36D1C8152630005ACDA /* MaxVerticalButton.h */,
 				509FA36E1C8152630005ACDA /* MaxVerticalButton.m */,
+				5024461D1C81A894000C1919 /* MaxPublishController.h */,
+				5024461E1C81A894000C1919 /* MaxPublishController.m */,
+				5024461F1C81A894000C1919 /* MaxPublishController.xib */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -450,6 +458,7 @@
 		509FA2F61C814F530005ACDA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = Max;
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = Max;
 				TargetAttributes = {
@@ -487,6 +496,7 @@
 				509FA37D1C8152630005ACDA /* MaxTopicCell.xib in Resources */,
 				509FA3831C8152630005ACDA /* MaxLoginRegisterController.xib in Resources */,
 				509FA37F1C8152630005ACDA /* MaxTopicPictureView.xib in Resources */,
+				502446211C81A894000C1919 /* MaxPublishController.xib in Resources */,
 				509FA38B1C8152630005ACDA /* MaxRecommendUserCell.xib in Resources */,
 				509FA3761C8152630005ACDA /* MaxShowPrictureController.xib in Resources */,
 				509FA3851C8152630005ACDA /* MaxRecommendViewController.xib in Resources */,
@@ -568,6 +578,7 @@
 				509FA3861C8152630005ACDA /* MaxRecommendTypeModel.m in Sources */,
 				509FA3901C8152630005ACDA /* MaxNavigationController.m in Sources */,
 				509FA3731C8152630005ACDA /* MaxEssenceViewController.m in Sources */,
+				502446201C81A894000C1919 /* MaxPublishController.m in Sources */,
 				509FA3931C8152630005ACDA /* MaxTabBar.m in Sources */,
 				509FA38D1C8152630005ACDA /* MaxNewViewController.m in Sources */,
 				509FA37E1C8152630005ACDA /* MaxTopicPictureView.m in Sources */,
