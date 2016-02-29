@@ -33,7 +33,7 @@
     
     //同样的外观样式可以通过appearance设置
     //后面必须带有 UI_APPEARANCE_SELECTOR的方法, 才可以使用此法
-//    //可以点进去查看是否带有此标志
+    //可以点进去查看是否带有此标志
     UITabBarItem *tabBarItem = [UITabBarItem appearance];
     [tabBarItem setTitleTextAttributes:dic forState:UIControlStateNormal];
     [tabBarItem setTitleTextAttributes:selectedDic forState:UIControlStateSelected];

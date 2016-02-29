@@ -98,7 +98,7 @@
     [titleView addSubview:indicator];
     self.indicator = indicator;
     
-    NSArray *titleTags = @[@"全部", @"视频", @"声音", @"图片", @"段子"];
+    NSArray *titleTags = @[@"全部", @"声音", @"视频", @"图片", @"段子"];
     
     NSInteger count = titleTags.count;
     CGFloat width = titleView.width / count;

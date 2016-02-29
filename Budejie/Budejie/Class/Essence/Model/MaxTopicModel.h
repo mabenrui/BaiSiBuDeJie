@@ -54,4 +54,35 @@
 @property (nonatomic, assign) CGFloat pictureProgress;
 
 
+/**
+ ******* 声音 *******
+ */
+/** 声音时间长度 **/
+@property (nonatomic, assign) NSInteger voicetime;
+/** 播放次数*/
+@property (nonatomic, assign) NSInteger playcount;
+/** 声音背景图*/
+@property (nonatomic, copy) NSString *bimageuri;
+/** 声音背景图frame **/
+@property (nonatomic, assign) CGRect voiceFrame;
+/** 声音下载进度*/
+@property (nonatomic, assign) CGFloat voiceProgress;
+
+
+/**
+ ******* 视频 *******
+ */
+/** 视频时间长度 **/
+@property (nonatomic, assign) NSInteger videotime;
+/** 视频次数*/
+//@property (nonatomic, assign) NSInteger playcount;
+/** 视频背景图*/
+//@property (nonatomic, copy) NSString *bimageuri;
+/** 视频背景图frame **/
+@property (nonatomic, assign) CGRect videoFrame;
+/** 视频下载进度*/
+@property (nonatomic, assign) CGFloat videoProgress;
+/** 视频资源*/
+@property (nonatomic, copy) NSString *videouri;
+
 @end

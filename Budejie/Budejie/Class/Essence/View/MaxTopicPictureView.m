@@ -31,7 +31,7 @@
     self.progressView.roundedCorners = 2;
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(showPicture)];
-    [self addGestureRecognizer:tap];
+//    [self addGestureRecognizer:tap];
 }
 - (void)showPicture{
     MaxShowPrictureController *show = [MaxShowPrictureController new];
@@ -69,24 +69,6 @@
         
     } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         self.progressView.hidden = YES;
-        
-        //只有大图才进行绘图操作
-        if (! topic.isBigImage) return;
-        
-        //开启图形上下文
-        UIGraphicsBeginImageContextWithOptions(topic.pictureFrame.size, YES, 0);
-        
-        //将下载完的图片image 绘制到上下文
-        CGFloat width = topic.pictureFrame.size.width;
-        CGFloat height = width * image.size.height / image.size.width;
-        
-        [image drawInRect:CGRectMake(0, 0, width, height)];
-        
-        //获得图片
-        self.imageView.image = UIGraphicsGetImageFromCurrentImageContext();
-        
-        //结束上下文
-        UIGraphicsEndImageContext();
     }];
     
     //判断gif,但是这样判断不准确,因为只判断了文件名的字符串,这个是可以改动的

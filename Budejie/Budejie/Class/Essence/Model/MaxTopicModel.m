@@ -32,21 +32,44 @@
         
         _rowHeight += textH + MaxMargin;
         
+        CGFloat frameX = 0;
+        CGFloat frameY = 0;
+        CGFloat frameW = 0;
+        CGFloat frameH = 0;
+        
         if (self.type == MaxTopicTypePicture) {
-            CGFloat pictureX = MaxMargin;
-            CGFloat pictureY = _rowHeight;
-            CGFloat pictureW = maxSize.width;
-            CGFloat pictureH = self.height / self.width * pictureW;
+            frameX = MaxMargin;
+            frameY = _rowHeight;
+            frameW = maxSize.width;
+            frameH = self.height / self.width * frameW;
             
-            if (pictureH >= MaxTopicPictureMaxH) {
-                pictureH = MaxTopicPictureDefaultH;
+            if (frameH >= MaxTopicPictureMaxH) {
+                frameH = MaxTopicPictureDefaultH;
                 self.bigPicture = YES;
             }
             
             //计算图片frame
-            _pictureFrame = CGRectMake(pictureX, pictureY, pictureW, pictureH);
+            _pictureFrame = CGRectMake(frameX, frameY, frameW, frameH);
             
-            _rowHeight += pictureH + MaxMargin;
+            _rowHeight += frameH + MaxMargin;
+        }else if (self.type == MaxTopicTypeVoice){
+            frameX = MaxMargin;
+            frameY = _rowHeight;
+            frameW = maxSize.width;
+            frameH = self.height / self.width * frameW;
+            
+            _voiceFrame = CGRectMake(frameX, frameY, frameW, frameH);
+
+            _rowHeight += frameH + MaxMargin;
+        }else if (self.type == MaxTopicTypeVideo){
+            frameX = MaxMargin;
+            frameY = _rowHeight;
+            frameW = maxSize.width;
+            frameH = self.height / self.width * frameW;
+            
+            _videoFrame = CGRectMake(frameX, frameY, frameW, frameH);
+            
+            _rowHeight += frameH + MaxMargin;
         }
         
         _rowHeight += MaxButtonGroupHeight + MaxMargin;

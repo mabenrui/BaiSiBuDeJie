@@ -9,6 +9,8 @@
 #import "MaxTopicCell.h"
 #import "MaxTopicModel.h"
 #import "MaxTopicPictureView.h"
+#import "MaxTopicVoiceView.h"
+#import "MaxTopicVideoView.h"
 #import "NSDate+MaxRelativeTime.h"
 #import <UIImageView+WebCache.h>
 
@@ -24,6 +26,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *text_label;
 
 @property (weak, nonatomic) MaxTopicPictureView *pictureView;
+@property (weak, nonatomic) MaxTopicVoiceView *voiceView;
+@property (weak, nonatomic) MaxTopicVideoView *videoView;
 
 @end
 
@@ -45,6 +49,27 @@
     
     return _pictureView;
 }
+- (MaxTopicVoiceView *)voiceView{
+    if (! _voiceView) {
+        MaxTopicVoiceView *voiceView = [MaxTopicVoiceView voiceView];
+        [self.contentView addSubview:voiceView];
+        
+        _voiceView = voiceView;
+    }
+    
+    return _voiceView;
+}
+- (MaxTopicVideoView *)videoView{
+    if (! _videoView) {
+        MaxTopicVideoView *videoView = [MaxTopicVideoView videoView];
+        [self.contentView addSubview:videoView];
+        
+        _videoView = videoView;
+    }
+    
+    return _videoView;
+}
+
 - (void)setTopic:(MaxTopicModel *)topic
 {
     _topic = topic;
@@ -64,8 +89,30 @@
     [self formatButtonTitle:self.commentButton count:topic.comment placeholder:@"评论"];
     
     if (topic.type == MaxTopicTypePicture) {
+        self.voiceView.hidden = YES;
+        self.videoView.hidden = YES;
+        self.pictureView.hidden = NO;
+        
         self.pictureView.topic = topic;
         self.pictureView.frame = topic.pictureFrame;
+    }else if (topic.type == MaxTopicTypeVoice){
+        self.pictureView.hidden = YES;
+        self.videoView.hidden = YES;
+        self.voiceView.hidden = NO;
+        
+        self.voiceView.topic = topic;
+        self.voiceView.frame = topic.voiceFrame;
+    }else if (topic.type == MaxTopicTypeVideo){
+        self.voiceView.hidden = YES;
+        self.pictureView.hidden = YES;
+        self.videoView.hidden = NO;
+        
+        self.videoView.topic = topic;
+        self.videoView.frame = topic.videoFrame;
+    }else{
+        self.voiceView.hidden = YES;
+        self.pictureView.hidden = YES;
+        self.videoView.hidden = YES;
     }
 }
 
