@@ -10,6 +10,17 @@
 #import "MaxVerticalButton.h"
 #import "POP.h"
 
+#define buttonTag 50
+
+/** POP 和 CoreAnimation区别
+ * CoreAnimation动画只能添加到layer上
+ * POP动画可以添加到任何对象上
+ * POP的底层并非基于CoreAnimation,是基于CADisplayLink
+ * CoreAnimation的动画"效果"只是表面,并么有真实改变frame,size等属性
+ * POP动画是实时的真正修改对象的属性
+ *
+ */
+
 @interface MaxPublishController ()
 
 @end
@@ -24,6 +35,9 @@
 }
 
 - (void)customButtons{
+    //动画开始之前, 禁止所有子控件的点击事件
+    self.view.userInteractionEnabled = NO;
+    
     //数据
     NSArray *images = @[@"publish-video", @"publish-picture", @"publish-text", @"publish-audio", @"publish-review", @"publish-offline"];
     NSArray *titles = @[@"发视频", @"发图片", @"发段子", @"发声音", @"审帖", @"离线下载"];
@@ -47,6 +61,8 @@
         [button setTitle:titles[i] forState:UIControlStateNormal];
         [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [button setImage:[UIImage imageNamed:images[i]] forState:UIControlStateNormal];
+        [button addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
+        button.tag = i + buttonTag;
         
         //设置frame
         NSInteger row = i / maxCols;
@@ -81,13 +97,58 @@
     aniForSlogan.fromValue = [NSValue valueWithCGPoint:CGPointMake(centerX, centerStartY)];
     aniForSlogan.toValue = [NSValue valueWithCGPoint:CGPointMake(centerX, centerEndY)];
     aniForSlogan.beginTime = CACurrentMediaTime() + count * 0.04;
+    [aniForSlogan setCompletionBlock:^(POPAnimation *ani, BOOL finish) {
+        //所有动画执行完毕, 恢复点击事件
+        self.view.userInteractionEnabled = YES;
+    }];
     
     [slogan pop_addAnimation:aniForSlogan forKey:@"slogan"];
-    
 }
+- (void)buttonClick:(UIButton *)button{
+    
+    void(^block)();
+    if (button.tag == buttonTag) {
+        block = ^(){
+            LLog(@"发视频");
+        };
+    }
+    
+    [self cancelWithCompletionBlock:block];
+}
+
 - (IBAction)cancel {
     
-    [self dismissViewControllerAnimated:NO completion:nil];
+    [self cancelWithCompletionBlock:nil];
+}
+
+- (void)cancelWithCompletionBlock:(void(^)())block{
+    //动画之前禁止事件
+    self.view.userInteractionEnabled = NO;
+    
+    NSInteger count = self.view.subviews.count;
+    for (int i = 2; i < count; i++) {
+        UIView *subView = self.view.subviews[i];
+        CGFloat centerY = subView.centerY;
+        CGFloat centerEndY = centerY + kHeight;
+        
+        POPBasicAnimation *bAni = [POPBasicAnimation animationWithPropertyNamed:kPOPViewCenter];
+        bAni.fromValue = [NSValue valueWithCGPoint:CGPointMake(subView.centerX, centerY)];
+        bAni.toValue = [NSValue valueWithCGPoint:CGPointMake(subView.centerX, centerEndY)];
+        bAni.beginTime = CACurrentMediaTime() + 0.04 * (i - 2);
+        
+        if (i == count - 1) {
+            [bAni setCompletionBlock:^(POPAnimation * anim, BOOL finish) {
+                [self dismissViewControllerAnimated:NO completion:nil];
+                ! block ? : block();
+            }];
+        }
+        
+        [subView pop_addAnimation:bAni forKey:@"subView"];
+    }
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    [self cancel];
 }
 
 @end
