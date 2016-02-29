@@ -1,14 +1,16 @@
 //
-//  MaxPublishController.m
+//  MaxPublish.m
 //  Budejie
 //
 //  Created by Max on 16/2/27.
 //  Copyright © 2016年 Max. All rights reserved.
 //
 
-#import "MaxPublishController.h"
+#import "MaxPublishView.h"
 #import "MaxVerticalButton.h"
 #import "POP.h"
+
+#define MaxRootVC [UIApplication sharedApplication].keyWindow.rootViewController.view
 
 #define buttonTag 50
 
@@ -21,22 +23,36 @@
  *
  */
 
-@interface MaxPublishController ()
+@interface MaxPublishView ()
 
 @end
 
-@implementation MaxPublishController
+@implementation MaxPublishView
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
+- (void)awakeFromNib {
     [self customButtons];
+}
+
++ (instancetype)publishView
+{
+    return [[[NSBundle mainBundle]loadNibNamed:NSStringFromClass(self) owner:nil options:nil]lastObject];
+}
+
+static UIWindow *window_;
++ (void)show
+{
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
     
+    MaxPublishView *publish = [MaxPublishView publishView];
+    publish.frame = window.bounds;
+    
+    [window addSubview:publish];    
 }
 
 - (void)customButtons{
     //动画开始之前, 禁止所有子控件的点击事件
-    self.view.userInteractionEnabled = NO;
+    self.userInteractionEnabled = NO;
+    MaxRootVC.userInteractionEnabled = NO;
     
     //数据
     NSArray *images = @[@"publish-video", @"publish-picture", @"publish-text", @"publish-audio", @"publish-review", @"publish-offline"];
@@ -54,7 +70,7 @@
     NSInteger count = images.count;
     for (int i = 0; i < count; i++) {
         MaxVerticalButton *button = [MaxVerticalButton new];
-        [self.view addSubview:button];
+        [self addSubview:button];
         
         //设置button
         button.titleLabel.font = [UIFont systemFontOfSize:14];
@@ -86,7 +102,7 @@
     
     //添加标语
     UIImageView *slogan = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"app_slogan"]];
-    [self.view addSubview:slogan];
+    [self addSubview:slogan];
     //标语动画
     POPSpringAnimation *aniForSlogan = [POPSpringAnimation animationWithPropertyNamed:kPOPViewCenter];
     
@@ -97,23 +113,25 @@
     aniForSlogan.fromValue = [NSValue valueWithCGPoint:CGPointMake(centerX, centerStartY)];
     aniForSlogan.toValue = [NSValue valueWithCGPoint:CGPointMake(centerX, centerEndY)];
     aniForSlogan.beginTime = CACurrentMediaTime() + count * 0.04;
+    
+    //防止循环引用
+    __weak MaxPublishView *publishWeak = self;
+    
     [aniForSlogan setCompletionBlock:^(POPAnimation *ani, BOOL finish) {
         //所有动画执行完毕, 恢复点击事件
-        self.view.userInteractionEnabled = YES;
+        publishWeak.userInteractionEnabled = YES;
+        MaxRootVC.userInteractionEnabled = YES;
     }];
     
     [slogan pop_addAnimation:aniForSlogan forKey:@"slogan"];
 }
 - (void)buttonClick:(UIButton *)button{
     
-    void(^block)();
-    if (button.tag == buttonTag) {
-        block = ^(){
+    [self cancelWithCompletionBlock:^{
+        if (button.tag == buttonTag) {
             LLog(@"发视频");
-        };
-    }
-    
-    [self cancelWithCompletionBlock:block];
+        }
+    }];
 }
 
 - (IBAction)cancel {
@@ -123,22 +141,28 @@
 
 - (void)cancelWithCompletionBlock:(void(^)())block{
     //动画之前禁止事件
-    self.view.userInteractionEnabled = NO;
-    
-    NSInteger count = self.view.subviews.count;
-    for (int i = 2; i < count; i++) {
-        UIView *subView = self.view.subviews[i];
+    self.userInteractionEnabled = NO;
+
+    NSInteger count = self.subviews.count;
+    NSInteger index = 1;
+    for (NSInteger i = index; i < count; i++) {
+        UIView *subView = self.subviews[i];
         CGFloat centerY = subView.centerY;
         CGFloat centerEndY = centerY + kHeight;
         
         POPBasicAnimation *bAni = [POPBasicAnimation animationWithPropertyNamed:kPOPViewCenter];
         bAni.fromValue = [NSValue valueWithCGPoint:CGPointMake(subView.centerX, centerY)];
         bAni.toValue = [NSValue valueWithCGPoint:CGPointMake(subView.centerX, centerEndY)];
-        bAni.beginTime = CACurrentMediaTime() + 0.04 * (i - 2);
+        bAni.beginTime = CACurrentMediaTime() + 0.04 * (i - index);
         
         if (i == count - 1) {
+            //防止循环引用
+            __weak MaxPublishView *publishWeak = self;
+            
             [bAni setCompletionBlock:^(POPAnimation * anim, BOOL finish) {
-                [self dismissViewControllerAnimated:NO completion:nil];
+                [publishWeak removeFromSuperview];
+                MaxRootVC.userInteractionEnabled = YES;
+
                 ! block ? : block();
             }];
         }
@@ -150,5 +174,8 @@
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     [self cancel];
 }
+//-(void)dealloc{
+//    NSLog(@"dealloc");
+//}
 
 @end

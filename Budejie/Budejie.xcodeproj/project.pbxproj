@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		18011016C6ECB9B61C72E2A2 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F6564E83B2FCB17347FBCF23 /* libPods.a */; };
-		502446201C81A894000C1919 /* MaxPublishController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5024461E1C81A894000C1919 /* MaxPublishController.m */; };
-		502446211C81A894000C1919 /* MaxPublishController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5024461F1C81A894000C1919 /* MaxPublishController.xib */; };
 		509FA3031C814F530005ACDA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 509FA3021C814F530005ACDA /* main.m */; };
 		509FA3061C814F530005ACDA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 509FA3051C814F530005ACDA /* AppDelegate.m */; };
 		509FA30E1C814F530005ACDA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 509FA30D1C814F530005ACDA /* Assets.xcassets */; };
@@ -45,19 +43,18 @@
 		509FA38D1C8152630005ACDA /* MaxNewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 509FA35B1C8152630005ACDA /* MaxNewViewController.m */; };
 		509FA38E1C8152630005ACDA /* Foundation+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = 509FA35F1C8152630005ACDA /* Foundation+Log.m */; };
 		509FA38F1C8152630005ACDA /* MaxConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 509FA3611C8152630005ACDA /* MaxConst.m */; };
-		509FA3901C8152630005ACDA /* MaxNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 509FA3631C8152630005ACDA /* MaxNavigationController.m */; };
-		509FA3911C8152630005ACDA /* MaxPushGuideView.m in Sources */ = {isa = PBXBuildFile; fileRef = 509FA3651C8152630005ACDA /* MaxPushGuideView.m */; };
-		509FA3921C8152630005ACDA /* MaxPushGuideView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 509FA3661C8152630005ACDA /* MaxPushGuideView.xib */; };
-		509FA3931C8152630005ACDA /* MaxTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 509FA3681C8152630005ACDA /* MaxTabBar.m */; };
-		509FA3941C8152630005ACDA /* MaxTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 509FA36A1C8152630005ACDA /* MaxTabBarController.m */; };
-		509FA3951C8152630005ACDA /* MaxTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 509FA36C1C8152630005ACDA /* MaxTextField.m */; };
-		509FA3961C8152630005ACDA /* MaxVerticalButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 509FA36E1C8152630005ACDA /* MaxVerticalButton.m */; };
+		50A517D11C83D138001E7663 /* MaxNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A517C01C83D138001E7663 /* MaxNavigationController.m */; };
+		50A517D21C83D138001E7663 /* MaxPublishView.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A517C21C83D138001E7663 /* MaxPublishView.m */; };
+		50A517D31C83D138001E7663 /* MaxPublishView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50A517C31C83D138001E7663 /* MaxPublishView.xib */; };
+		50A517D41C83D138001E7663 /* MaxTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A517C51C83D138001E7663 /* MaxTabBarController.m */; };
+		50A517D51C83D138001E7663 /* MaxPushGuideView.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A517C91C83D138001E7663 /* MaxPushGuideView.m */; };
+		50A517D61C83D138001E7663 /* MaxPushGuideView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50A517CA1C83D138001E7663 /* MaxPushGuideView.xib */; };
+		50A517D71C83D138001E7663 /* MaxTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A517CC1C83D138001E7663 /* MaxTabBar.m */; };
+		50A517D81C83D138001E7663 /* MaxTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A517CE1C83D138001E7663 /* MaxTextField.m */; };
+		50A517D91C83D138001E7663 /* MaxVerticalButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A517D01C83D138001E7663 /* MaxVerticalButton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5024461D1C81A894000C1919 /* MaxPublishController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaxPublishController.h; sourceTree = "<group>"; };
-		5024461E1C81A894000C1919 /* MaxPublishController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaxPublishController.m; sourceTree = "<group>"; };
-		5024461F1C81A894000C1919 /* MaxPublishController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MaxPublishController.xib; sourceTree = "<group>"; };
 		509FA2FE1C814F530005ACDA /* Budejie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Budejie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		509FA3021C814F530005ACDA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		509FA3041C814F530005ACDA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -119,20 +116,23 @@
 		509FA35F1C8152630005ACDA /* Foundation+Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Foundation+Log.m"; sourceTree = "<group>"; };
 		509FA3601C8152630005ACDA /* MaxConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaxConst.h; sourceTree = "<group>"; };
 		509FA3611C8152630005ACDA /* MaxConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaxConst.m; sourceTree = "<group>"; };
-		509FA3621C8152630005ACDA /* MaxNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaxNavigationController.h; sourceTree = "<group>"; };
-		509FA3631C8152630005ACDA /* MaxNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaxNavigationController.m; sourceTree = "<group>"; };
-		509FA3641C8152630005ACDA /* MaxPushGuideView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaxPushGuideView.h; sourceTree = "<group>"; };
-		509FA3651C8152630005ACDA /* MaxPushGuideView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaxPushGuideView.m; sourceTree = "<group>"; };
-		509FA3661C8152630005ACDA /* MaxPushGuideView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MaxPushGuideView.xib; sourceTree = "<group>"; };
-		509FA3671C8152630005ACDA /* MaxTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaxTabBar.h; sourceTree = "<group>"; };
-		509FA3681C8152630005ACDA /* MaxTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaxTabBar.m; sourceTree = "<group>"; };
-		509FA3691C8152630005ACDA /* MaxTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaxTabBarController.h; sourceTree = "<group>"; };
-		509FA36A1C8152630005ACDA /* MaxTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaxTabBarController.m; sourceTree = "<group>"; };
-		509FA36B1C8152630005ACDA /* MaxTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaxTextField.h; sourceTree = "<group>"; };
-		509FA36C1C8152630005ACDA /* MaxTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaxTextField.m; sourceTree = "<group>"; };
-		509FA36D1C8152630005ACDA /* MaxVerticalButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaxVerticalButton.h; sourceTree = "<group>"; };
-		509FA36E1C8152630005ACDA /* MaxVerticalButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaxVerticalButton.m; sourceTree = "<group>"; };
 		509FA36F1C8152630005ACDA /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PrefixHeader.pch; path = Class/PrefixHeader.pch; sourceTree = "<group>"; };
+		50A517BF1C83D138001E7663 /* MaxNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaxNavigationController.h; sourceTree = "<group>"; };
+		50A517C01C83D138001E7663 /* MaxNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaxNavigationController.m; sourceTree = "<group>"; };
+		50A517C11C83D138001E7663 /* MaxPublishView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MaxPublishView.h; path = ../Controller/MaxPublishView.h; sourceTree = "<group>"; };
+		50A517C21C83D138001E7663 /* MaxPublishView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MaxPublishView.m; path = ../Controller/MaxPublishView.m; sourceTree = "<group>"; };
+		50A517C31C83D138001E7663 /* MaxPublishView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MaxPublishView.xib; path = ../Controller/MaxPublishView.xib; sourceTree = "<group>"; };
+		50A517C41C83D138001E7663 /* MaxTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaxTabBarController.h; sourceTree = "<group>"; };
+		50A517C51C83D138001E7663 /* MaxTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaxTabBarController.m; sourceTree = "<group>"; };
+		50A517C81C83D138001E7663 /* MaxPushGuideView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaxPushGuideView.h; sourceTree = "<group>"; };
+		50A517C91C83D138001E7663 /* MaxPushGuideView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaxPushGuideView.m; sourceTree = "<group>"; };
+		50A517CA1C83D138001E7663 /* MaxPushGuideView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MaxPushGuideView.xib; sourceTree = "<group>"; };
+		50A517CB1C83D138001E7663 /* MaxTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaxTabBar.h; sourceTree = "<group>"; };
+		50A517CC1C83D138001E7663 /* MaxTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaxTabBar.m; sourceTree = "<group>"; };
+		50A517CD1C83D138001E7663 /* MaxTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaxTextField.h; sourceTree = "<group>"; };
+		50A517CE1C83D138001E7663 /* MaxTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaxTextField.m; sourceTree = "<group>"; };
+		50A517CF1C83D138001E7663 /* MaxVerticalButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaxVerticalButton.h; sourceTree = "<group>"; };
+		50A517D01C83D138001E7663 /* MaxVerticalButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaxVerticalButton.m; sourceTree = "<group>"; };
 		81AE9F67E71F4A4189F84511 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		941E0D4CC628038BA5B7760F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		F6564E83B2FCB17347FBCF23 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -398,27 +398,51 @@
 		509FA35E1C8152630005ACDA /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				50A517BE1C83D138001E7663 /* Controller */,
+				50A517C61C83D138001E7663 /* Model */,
+				50A517C71C83D138001E7663 /* View */,
 				509FA35F1C8152630005ACDA /* Foundation+Log.m */,
 				509FA3601C8152630005ACDA /* MaxConst.h */,
 				509FA3611C8152630005ACDA /* MaxConst.m */,
-				509FA3621C8152630005ACDA /* MaxNavigationController.h */,
-				509FA3631C8152630005ACDA /* MaxNavigationController.m */,
-				509FA3641C8152630005ACDA /* MaxPushGuideView.h */,
-				509FA3651C8152630005ACDA /* MaxPushGuideView.m */,
-				509FA3661C8152630005ACDA /* MaxPushGuideView.xib */,
-				509FA3671C8152630005ACDA /* MaxTabBar.h */,
-				509FA3681C8152630005ACDA /* MaxTabBar.m */,
-				509FA3691C8152630005ACDA /* MaxTabBarController.h */,
-				509FA36A1C8152630005ACDA /* MaxTabBarController.m */,
-				509FA36B1C8152630005ACDA /* MaxTextField.h */,
-				509FA36C1C8152630005ACDA /* MaxTextField.m */,
-				509FA36D1C8152630005ACDA /* MaxVerticalButton.h */,
-				509FA36E1C8152630005ACDA /* MaxVerticalButton.m */,
-				5024461D1C81A894000C1919 /* MaxPublishController.h */,
-				5024461E1C81A894000C1919 /* MaxPublishController.m */,
-				5024461F1C81A894000C1919 /* MaxPublishController.xib */,
 			);
 			path = Other;
+			sourceTree = "<group>";
+		};
+		50A517BE1C83D138001E7663 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				50A517BF1C83D138001E7663 /* MaxNavigationController.h */,
+				50A517C01C83D138001E7663 /* MaxNavigationController.m */,
+				50A517C41C83D138001E7663 /* MaxTabBarController.h */,
+				50A517C51C83D138001E7663 /* MaxTabBarController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		50A517C61C83D138001E7663 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		50A517C71C83D138001E7663 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				50A517C11C83D138001E7663 /* MaxPublishView.h */,
+				50A517C21C83D138001E7663 /* MaxPublishView.m */,
+				50A517C31C83D138001E7663 /* MaxPublishView.xib */,
+				50A517C81C83D138001E7663 /* MaxPushGuideView.h */,
+				50A517C91C83D138001E7663 /* MaxPushGuideView.m */,
+				50A517CA1C83D138001E7663 /* MaxPushGuideView.xib */,
+				50A517CB1C83D138001E7663 /* MaxTabBar.h */,
+				50A517CC1C83D138001E7663 /* MaxTabBar.m */,
+				50A517CD1C83D138001E7663 /* MaxTextField.h */,
+				50A517CE1C83D138001E7663 /* MaxTextField.m */,
+				50A517CF1C83D138001E7663 /* MaxVerticalButton.h */,
+				50A517D01C83D138001E7663 /* MaxVerticalButton.m */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		A195B1745CCB9F198434D15C /* Frameworks */ = {
@@ -494,13 +518,13 @@
 				509FA30E1C814F530005ACDA /* Assets.xcassets in Resources */,
 				509FA3891C8152630005ACDA /* MaxRecommendTypeCell.xib in Resources */,
 				509FA37D1C8152630005ACDA /* MaxTopicCell.xib in Resources */,
+				50A517D61C83D138001E7663 /* MaxPushGuideView.xib in Resources */,
 				509FA3831C8152630005ACDA /* MaxLoginRegisterController.xib in Resources */,
 				509FA37F1C8152630005ACDA /* MaxTopicPictureView.xib in Resources */,
-				502446211C81A894000C1919 /* MaxPublishController.xib in Resources */,
 				509FA38B1C8152630005ACDA /* MaxRecommendUserCell.xib in Resources */,
 				509FA3761C8152630005ACDA /* MaxShowPrictureController.xib in Resources */,
+				50A517D31C83D138001E7663 /* MaxPublishView.xib in Resources */,
 				509FA3851C8152630005ACDA /* MaxRecommendViewController.xib in Resources */,
-				509FA3921C8152630005ACDA /* MaxPushGuideView.xib in Resources */,
 				509FA3811C8152630005ACDA /* MaxFriendTrendsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -560,33 +584,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50A517D81C83D138001E7663 /* MaxTextField.m in Sources */,
 				509FA3841C8152630005ACDA /* MaxRecommendViewController.m in Sources */,
 				509FA3801C8152630005ACDA /* MaxFriendTrendsViewController.m in Sources */,
 				509FA37A1C8152630005ACDA /* MaxRecommendTagCell.m in Sources */,
+				50A517D51C83D138001E7663 /* MaxPushGuideView.m in Sources */,
 				509FA3711C8152630005ACDA /* UIBarButtonItem+Extension.m in Sources */,
 				509FA38F1C8152630005ACDA /* MaxConst.m in Sources */,
 				509FA3701C8152630005ACDA /* NSDate+MaxRelativeTime.m in Sources */,
-				509FA3951C8152630005ACDA /* MaxTextField.m in Sources */,
 				509FA3781C8152630005ACDA /* MaxRecommendTagModel.m in Sources */,
 				509FA3061C814F530005ACDA /* AppDelegate.m in Sources */,
-				509FA3961C8152630005ACDA /* MaxVerticalButton.m in Sources */,
+				50A517D91C83D138001E7663 /* MaxVerticalButton.m in Sources */,
 				509FA3721C8152630005ACDA /* UIView+FrameExtension.m in Sources */,
 				509FA3771C8152630005ACDA /* MaxTopicController.m in Sources */,
 				509FA38C1C8152630005ACDA /* MaxMeViewController.m in Sources */,
+				50A517D71C83D138001E7663 /* MaxTabBar.m in Sources */,
 				509FA38A1C8152630005ACDA /* MaxRecommendUserCell.m in Sources */,
 				509FA3871C8152630005ACDA /* MaxRecommendUserModel.m in Sources */,
 				509FA3861C8152630005ACDA /* MaxRecommendTypeModel.m in Sources */,
-				509FA3901C8152630005ACDA /* MaxNavigationController.m in Sources */,
+				50A517D11C83D138001E7663 /* MaxNavigationController.m in Sources */,
 				509FA3731C8152630005ACDA /* MaxEssenceViewController.m in Sources */,
-				502446201C81A894000C1919 /* MaxPublishController.m in Sources */,
-				509FA3931C8152630005ACDA /* MaxTabBar.m in Sources */,
 				509FA38D1C8152630005ACDA /* MaxNewViewController.m in Sources */,
 				509FA37E1C8152630005ACDA /* MaxTopicPictureView.m in Sources */,
 				509FA3031C814F530005ACDA /* main.m in Sources */,
 				509FA37C1C8152630005ACDA /* MaxTopicCell.m in Sources */,
-				509FA3911C8152630005ACDA /* MaxPushGuideView.m in Sources */,
-				509FA3941C8152630005ACDA /* MaxTabBarController.m in Sources */,
+				50A517D21C83D138001E7663 /* MaxPublishView.m in Sources */,
 				509FA3791C8152630005ACDA /* MaxTopicModel.m in Sources */,
+				50A517D41C83D138001E7663 /* MaxTabBarController.m in Sources */,
 				509FA3741C8152630005ACDA /* MaxRecommendTagController.m in Sources */,
 				509FA3751C8152630005ACDA /* MaxShowPrictureController.m in Sources */,
 				509FA3821C8152630005ACDA /* MaxLoginRegisterController.m in Sources */,
@@ -683,6 +707,7 @@
 			baseConfigurationReference = 941E0D4CC628038BA5B7760F /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Budejie/PrefixHeader.pch";
 				INFOPLIST_FILE = Budejie/Info.plist;
@@ -697,6 +722,7 @@
 			baseConfigurationReference = 81AE9F67E71F4A4189F84511 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Budejie/PrefixHeader.pch";
 				INFOPLIST_FILE = Budejie/Info.plist;

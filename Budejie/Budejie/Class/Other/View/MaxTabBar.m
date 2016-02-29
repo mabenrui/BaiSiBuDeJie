@@ -7,11 +7,11 @@
 //
 
 #import "MaxTabBar.h"
-#import "MaxPublishController.h"
+#import "MaxPublishView.h"
 
 @interface MaxTabBar ()
 
-@property (nonatomic, weak) UIButton *pulish;
+@property (nonatomic, assign) UIButton *pulish;
 
 @end
 
@@ -38,8 +38,7 @@
     return self;
 }
 - (void)pulishClick{
-    MaxPublishController *publish = [MaxPublishController new];
-    [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:publish animated:NO completion:nil];
+    [MaxPublishView show];
 }
 
 - (void)layoutSubviews{

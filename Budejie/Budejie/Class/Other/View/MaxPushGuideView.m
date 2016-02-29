@@ -35,7 +35,7 @@
 }
 
 + (instancetype)pushGuide{
-    return [[[NSBundle mainBundle]loadNibNamed:NSStringFromClass([self class]) owner:nil options:nil] lastObject];
+    return [[[NSBundle mainBundle]loadNibNamed:NSStringFromClass(self) owner:nil options:nil] lastObject];
 }
 - (IBAction)close {
     [self removeFromSuperview];

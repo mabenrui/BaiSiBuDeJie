@@ -1,5 +1,5 @@
 //
-//  MaxPublishController.h
+//  MaxPublishView.h
 //  Budejie
 //
 //  Created by Max on 16/2/27.
@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MaxPublishController : UIViewController
+@interface MaxPublishView : UIView
+
+/**
+ * 显示 发布界面
+ */
++ (void)show;
+
++ (instancetype)publishView;
 
 @end

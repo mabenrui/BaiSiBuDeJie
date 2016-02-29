@@ -50,6 +50,9 @@
     [self.progressView setProgress:self.topic.pictureProgress];
     [imageView sd_setImageWithURL:[NSURL URLWithString:self.topic.image1] placeholderImage:nil options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
         CGFloat progress = 1.0 * receivedSize / expectedSize;
+        if (progress <= 0) {
+            progress = 0;
+        }
         [self.progressView setProgress:progress];
         self.progressView.progressLabel.text = [NSString stringWithFormat:@"%.0f%%", progress * 100];
         self.progressView.progressLabel.textColor = [UIColor whiteColor];
