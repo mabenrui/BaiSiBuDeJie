@@ -42,28 +42,6 @@
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(playerDidEnd) name:AVPlayerItemDidPlayToEndTimeNotification object:nil];
 }
 
-- (AVPlayer *)player
-{
-    if (nil == _player) {
-        if (nil == _playerItem) {
-            NSURL *uri = [NSURL URLWithString:self.topic.voiceuri];
-            _playerItem = [[AVPlayerItem alloc]initWithURL:uri];
-        }
-        
-        _player = [[AVPlayer alloc]initWithPlayerItem:_playerItem];
-    }
-    
-    return _player;
-}
-- (AVPlayerItem *)playerItem
-{
-    if (nil == _playerItem) {
-        NSURL *uri = [NSURL URLWithString:self.topic.voiceuri];
-        _playerItem = [[AVPlayerItem alloc]initWithURL:uri];
-    }
-    return _playerItem;
-}
-
 - (void)showVoice
 {
     
@@ -77,6 +55,10 @@
 
 - (void)setTopic:(MaxTopicModel *)topic{
     _topic = topic;
+    
+    //播发器没有使用懒加载,因为在cell复用时,会出现同样的播放内容
+    self.playerItem = [[AVPlayerItem alloc]initWithURL:[NSURL URLWithString:topic.voiceuri]];
+    self.player = [[AVPlayer alloc]initWithPlayerItem:self.playerItem];
     
     self.playCountLabel.text = [NSString stringWithFormat:@"%ld播放", topic.playcount];
     self.playTimeLabel.text = [NSString stringWithFormat:@"%02ld:%02ld", topic.voicetime/60, topic.voicetime%60];
@@ -102,32 +84,19 @@
         
     } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         self.progressView.hidden = YES;
-        
-        //只有大图才进行绘图操作
-        if (! topic.isBigImage) return;
-        
-        //开启图形上下文
-        UIGraphicsBeginImageContextWithOptions(topic.voiceFrame.size, YES, 0);
-        
-        //将下载完的图片image 绘制到上下文
-        CGFloat width = topic.voiceFrame.size.width;
-        CGFloat height = width * image.size.height / image.size.width;
-        
-        [image drawInRect:CGRectMake(0, 0, width, height)];
-        
-        //获得图片
-        self.imageView.image = UIGraphicsGetImageFromCurrentImageContext();
-        
-        //结束上下文
-        UIGraphicsEndImageContext();
+
     }];
 }
 
 - (IBAction)playButtonClick:(UIButton *)sender {
     UIImage *pause = [UIImage imageNamed:@"playButtonPause"];
     UIImage *play = [UIImage imageNamed:@"playButtonPlay"];
-
-    if (! self.topic.isPlaying) {
+    
+    if (! self.topic.isActive) {
+        
+        if ([_delegate respondsToSelector:@selector(topicVoiceViewDidActive:)]) {
+            [_delegate topicVoiceViewDidActive:self.topic];
+        }
 
         [sender setImage:pause forState:UIControlStateNormal];
         
@@ -139,24 +108,33 @@
             } completion:^(BOOL finished) {
                 [self playAction];
             }];
-            
-            __weak AVPlayerItem *weakPlayerItem = self.playerItem;
-            __weak MaxTopicVoiceView *weakSelf = self;
-            [self.player addPeriodicTimeObserverForInterval:CMTimeMake(1, 1) queue:dispatch_get_main_queue() usingBlock:^(CMTime time) {
-                CGFloat currenTime = weakPlayerItem.currentTime.value / weakPlayerItem.currentTime.timescale;
-                CGFloat duration = weakPlayerItem.duration.value / weakPlayerItem.duration.timescale;
-                weakSelf.currentProgressLabel.text = [NSString stringWithFormat:@"%02ld:%02ld", (NSInteger)currenTime/60, (NSInteger)currenTime%60];
-                weakSelf.playProgress.value = currenTime/duration;
-            }];
         }
         
-        self.topic.isPlaying = YES;
+        __weak AVPlayerItem *weakPlayerItem = self.playerItem;
+        __weak MaxTopicVoiceView *weakSelf = self;
+        [self.player addPeriodicTimeObserverForInterval:CMTimeMake(1, 1) queue:dispatch_get_main_queue() usingBlock:^(CMTime time) {
+            CGFloat currenTime = weakPlayerItem.currentTime.value / weakPlayerItem.currentTime.timescale;
+            CGFloat duration = weakPlayerItem.duration.value / weakPlayerItem.duration.timescale;
+            weakSelf.currentProgressLabel.text = [NSString stringWithFormat:@"%02ld:%02ld", (NSInteger)currenTime/60, (NSInteger)currenTime%60];
+            weakSelf.playProgress.value = currenTime/duration;
+        }];
+        
+        self.topic.isVoicePlaying = YES;
+        self.topic.isActive = YES;
         
         [self.player play];
-    }else{
-        [sender setImage:play forState:UIControlStateNormal];
-        self.topic.isPlaying = NO;
+    }else if (self.topic.isVoicePlaying){
+        //暂停音乐
         [self.player pause];
+        self.topic.isVoicePlaying = NO;
+        
+        [self.playButton setImage:play forState:UIControlStateNormal];
+    }else if (! self.topic.isVoicePlaying){
+        //play音乐
+        [self.player play];
+        self.topic.isVoicePlaying = YES;
+        
+        [self.playButton setImage:pause forState:UIControlStateNormal];
     }
 }
 - (IBAction)beforeChangeProgress {
@@ -171,6 +149,7 @@
     [self.player play];
 }
 
+//播放开始时,视图处理
 - (void)playAction
 {
     self.playCountLabel.hidden = YES;
@@ -180,6 +159,7 @@
     self.playButton.transform = CGAffineTransformMakeTranslation(-1*delta, 0);
     
 }
+//播放完毕后视图处理
 - (void)playEnd
 {
     self.playCountLabel.hidden = NO;
@@ -188,19 +168,20 @@
     self.playButton.transform = CGAffineTransformIdentity;
 }
 
+//播放完毕
 - (void)playerDidEnd
 {
-    if (self.playButton.x <= MaxMargin) {
-        [UIView animateWithDuration:0.5 animations:^{
-            self.playButton.transform = CGAffineTransformIdentity;
-        }];
-    }
     [self playEnd];
+    
+    //button的图标
     [self.playButton setImage:[UIImage imageNamed:@"playButtonPlay"] forState:UIControlStateNormal];
+    //播放进度初始化
     self.playProgress.value = 0;
+    //音乐初始化
     [self.player seekToTime:CMTimeMake(0, 1)];
     
-    self.topic.isPlaying = NO;
+    self.topic.isVoicePlaying = NO;
+    self.topic.isActive = NO;
 }
 
 @end

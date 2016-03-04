@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <AVFoundation/AVFoundation.h>
+@class MaxTopicVoiceView;
+@class MaxTopicVideoView;
 
 @interface MaxTopicModel : NSObject
 
@@ -61,9 +62,7 @@
 /** 背景图*/
 @property (nonatomic, copy) NSString *bimageuri;
 /** 正在播放*/
-@property (nonatomic, assign) BOOL isPlaying;
-/** 播发器*/
-@property (nonatomic, weak) AVPlayer *player;
+@property (nonatomic, assign) BOOL isActive;
 
 /**
  * 声音
@@ -76,6 +75,10 @@
 @property (nonatomic, assign) CGFloat voiceProgress;
 /** 声音资源*/
 @property (nonatomic, copy) NSString *voiceuri;
+/** 正在播放的view*/
+@property (nonatomic, weak) MaxTopicVoiceView *currentVoiceView;
+/** 声音是否正在播放*/
+@property (nonatomic, assign) BOOL isVoicePlaying;
 
 /**
  * 视频
@@ -88,6 +91,8 @@
 @property (nonatomic, assign) CGFloat videoProgress;
 /** 视频资源*/
 @property (nonatomic, copy) NSString *videouri;
+/** 视频是否正在播放*/
+@property (nonatomic, assign) BOOL isVideoPlaying;
 
 /**
  * 评论

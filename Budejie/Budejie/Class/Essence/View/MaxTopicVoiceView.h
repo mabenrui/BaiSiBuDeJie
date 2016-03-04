@@ -10,11 +10,19 @@
 #import <AVFoundation/AVFoundation.h>
 @class MaxTopicModel;
 
+@protocol MaxTopicVoiceViewDelegate <NSObject>
+
+- (void)topicVoiceViewDidActive:(MaxTopicModel *)topic;
+
+@end
+
 @interface MaxTopicVoiceView : UIView
 
 /** model*/
-@property (nonatomic, strong) MaxTopicModel *topic;
-@property (strong, nonatomic) AVPlayer *player;
+@property (nonatomic, weak) MaxTopicModel *topic;
+@property (nonatomic, strong) AVPlayer *player;
+/** 代理*/
+@property (nonatomic, weak) id<MaxTopicVoiceViewDelegate> delegate;
 
 + (instancetype)voiceView;
 

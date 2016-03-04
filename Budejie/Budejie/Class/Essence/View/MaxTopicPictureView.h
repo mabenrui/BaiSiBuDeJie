@@ -12,7 +12,7 @@
 @interface MaxTopicPictureView : UIView
 
 /** model*/
-@property (nonatomic, strong) MaxTopicModel *topic;
+@property (nonatomic, weak) MaxTopicModel *topic;
 
 + (instancetype)pictureView;
 

@@ -25,8 +25,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *commentButton;
 @property (weak, nonatomic) IBOutlet UILabel *text_label;
 
-
-
 @end
 
 @implementation MaxTopicCell

@@ -16,7 +16,7 @@
 #import <UIImageView+WebCache.h>
 #import <AVFoundation/AVFoundation.h>
 
-@interface MaxTopicController ()
+@interface MaxTopicController () <MaxTopicVoiceViewDelegate>
 
 //帖子数组
 @property (nonatomic, copy) NSMutableArray *topics;
@@ -25,8 +25,9 @@
 //maxtime 加载分页需要这个参数
 @property (nonatomic, copy) NSString *maxtime;
 
-//正在播放音乐的player
-@property (nonatomic, weak) AVPlayer *currentVoicePlayer;
+//正处于active的topic
+@property (nonatomic, weak) MaxTopicModel *currentTopic;
+
 
 @end
 
@@ -40,6 +41,7 @@ static NSString *const topic = @"topic";
     [self setTableView];
     
     [self setRefresh];
+
 }
 
 - (void)setTableView
@@ -159,9 +161,11 @@ static NSString *const topic = @"topic";
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     if (cell.topic.type == MaxTopicTypeVoice) {
-        if (cell.topic.isPlaying == YES) {
+        cell.voiceView.delegate = self;
+        
+        if (cell.topic.isActive == YES) {
             [cell.voiceView playAction];
-            self.currentVoicePlayer = cell.voiceView.player;
+
         }else{
             [cell.voiceView playEnd];
         }
@@ -176,10 +180,14 @@ static NSString *const topic = @"topic";
 
     return topic.rowHeight;
 }
-- (void)didReceiveMemoryWarning{
-    [super didReceiveMemoryWarning];
-    
-    NSLog(@"didReceiveMemoryWarning");
-}
 
+- (void)topicVoiceViewDidActive:(MaxTopicModel *)topic{
+    
+    if (self.currentTopic) {
+        self.currentTopic.isActive = NO;
+        self.currentTopic.isVoicePlaying = NO;
+    }
+    
+    self.currentTopic = topic;
+}
 @end

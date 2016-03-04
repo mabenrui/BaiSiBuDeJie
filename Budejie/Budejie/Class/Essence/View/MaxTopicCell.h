@@ -15,7 +15,7 @@
 @interface MaxTopicCell : UITableViewCell
 
 /** 帖子model*/
-@property (nonatomic, strong) MaxTopicModel *topic;
+@property (nonatomic, weak) MaxTopicModel *topic;
 
 @property (weak, nonatomic) MaxTopicPictureView *pictureView;
 @property (weak, nonatomic) MaxTopicVoiceView *voiceView;
