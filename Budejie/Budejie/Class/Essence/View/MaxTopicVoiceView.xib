@@ -43,6 +43,39 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oPF-Tk-bes" userLabel="声音进度背景">
+                    <rect key="frame" x="0.0" y="242" width="378" height="30"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MAr-jw-1AN" userLabel="播放当前进度">
+                            <rect key="frame" x="63" y="14" width="36.5" height="16"/>
+                            <color key="backgroundColor" white="0.33333333333333331" alpha="0.5" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="2rb-cH-kcj" userLabel="声音进度">
+                            <rect key="frame" x="61" y="0.0" width="319" height="6"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="5" id="WNb-IR-kI0"/>
+                            </constraints>
+                            <connections>
+                                <action selector="afterChangeProgress" destination="iN0-l3-epB" eventType="touchUpOutside" id="T3h-RC-V4f"/>
+                                <action selector="afterChangeProgress" destination="iN0-l3-epB" eventType="touchUpInside" id="WZ2-1m-wH6"/>
+                                <action selector="beforeChangeProgress" destination="iN0-l3-epB" eventType="touchDown" id="R7L-Vy-PuE"/>
+                                <action selector="changePlayProgress:" destination="iN0-l3-epB" eventType="valueChanged" id="hIP-QS-pSK"/>
+                            </connections>
+                        </slider>
+                    </subviews>
+                    <color key="backgroundColor" white="0.33333333333333331" alpha="0.5" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="2rb-cH-kcj" secondAttribute="trailing" id="641-Rf-LR6"/>
+                        <constraint firstItem="MAr-jw-1AN" firstAttribute="leading" secondItem="2rb-cH-kcj" secondAttribute="leading" id="HKY-gC-WEk"/>
+                        <constraint firstItem="2rb-cH-kcj" firstAttribute="leading" secondItem="oPF-Tk-bes" secondAttribute="leading" constant="63" id="Kv3-9B-YH7"/>
+                        <constraint firstAttribute="bottom" secondItem="MAr-jw-1AN" secondAttribute="bottom" id="W9Z-9h-je4"/>
+                        <constraint firstItem="2rb-cH-kcj" firstAttribute="top" secondItem="oPF-Tk-bes" secondAttribute="top" id="di0-Ex-H1j"/>
+                        <constraint firstAttribute="height" constant="30" id="rMQ-66-5sK"/>
+                    </constraints>
+                </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MfL-zf-OcQ">
                     <rect key="frame" x="157" y="209" width="63" height="63"/>
                     <constraints>
@@ -64,8 +97,11 @@
                 <constraint firstItem="7l4-kN-H03" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="AzV-gc-Ta6"/>
                 <constraint firstAttribute="trailing" secondItem="PVi-6V-d7a" secondAttribute="trailing" id="BiV-UH-3F8"/>
                 <constraint firstAttribute="trailing" secondItem="c6w-uL-Tdx" secondAttribute="trailing" id="Dfa-QD-AKY"/>
+                <constraint firstAttribute="trailing" secondItem="oPF-Tk-bes" secondAttribute="trailing" id="Pw4-db-mbb"/>
+                <constraint firstAttribute="bottom" secondItem="oPF-Tk-bes" secondAttribute="bottom" id="U76-DB-fCq"/>
                 <constraint firstAttribute="bottom" secondItem="PVi-6V-d7a" secondAttribute="bottom" id="YBz-Yl-YuT"/>
                 <constraint firstItem="Hau-07-NOT" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="cpo-rv-5y1"/>
+                <constraint firstItem="oPF-Tk-bes" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ewL-XY-KgG"/>
                 <constraint firstAttribute="bottom" secondItem="c6w-uL-Tdx" secondAttribute="bottom" id="mGe-P1-bCg"/>
                 <constraint firstItem="rcR-CS-sJj" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ojy-rR-pbm"/>
                 <constraint firstItem="Hau-07-NOT" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="pLW-rH-ekM"/>
@@ -77,10 +113,13 @@
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="currentProgressLabel" destination="MAr-jw-1AN" id="xQT-5n-Ja1"/>
                 <outlet property="imageView" destination="PVi-6V-d7a" id="BAx-xO-lGN"/>
                 <outlet property="playButton" destination="MfL-zf-OcQ" id="bK9-ZP-dYA"/>
                 <outlet property="playCountLabel" destination="7l4-kN-H03" id="Znp-gz-uCa"/>
+                <outlet property="playProgress" destination="2rb-cH-kcj" id="EFU-1K-Z5F"/>
                 <outlet property="playTimeLabel" destination="c6w-uL-Tdx" id="C8u-hg-KwL"/>
+                <outlet property="playVoiceBg" destination="oPF-Tk-bes" id="ULY-my-YCM"/>
                 <outlet property="progressView" destination="Hau-07-NOT" id="olB-aA-4On"/>
             </connections>
             <point key="canvasLocation" x="361" y="383"/>

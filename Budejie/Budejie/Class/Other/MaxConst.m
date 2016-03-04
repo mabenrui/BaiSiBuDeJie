@@ -17,3 +17,6 @@ CGFloat const MaxTopicCellHeaderHeight = 55;
 
 CGFloat const MaxTopicPictureMaxH = 1000;
 CGFloat const MaxTopicPictureDefaultH = 250;
+
+NSString *const MaxUserSexMale = @"m";
+NSString *const MaxUserSexFemale = @"f";

@@ -18,6 +18,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *playCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *playTimeLabel;
 @property (weak, nonatomic) IBOutlet UIButton *playButton;
+@property (weak, nonatomic) IBOutlet UISlider *playProgress;
+@property (weak, nonatomic) IBOutlet UILabel *currentProgressLabel;
+@property (weak, nonatomic) IBOutlet UIView *playVoiceBg;
+
+@property (strong, nonatomic) AVPlayerItem *playerItem;
 
 @end
 
@@ -27,21 +32,42 @@
     self.autoresizingMask = UIViewAutoresizingNone;
     self.progressView.roundedCorners = 2;
     
+    [self.playProgress setThumbImage:[UIImage imageNamed:@"voice-play-progress-icon"] forState:UIControlStateNormal];
+    [self.playProgress setMinimumTrackImage:[UIImage imageNamed:@"voice-play-progress"] forState:UIControlStateNormal];
+    
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(showVoice)];
     [self addGestureRecognizer:tap];
+    
+    //音乐播放完毕的通知
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(playerDidEnd) name:AVPlayerItemDidPlayToEndTimeNotification object:nil];
 }
+
+- (AVPlayer *)player
+{
+    if (nil == _player) {
+        if (nil == _playerItem) {
+            NSURL *uri = [NSURL URLWithString:self.topic.voiceuri];
+            _playerItem = [[AVPlayerItem alloc]initWithURL:uri];
+        }
+        
+        _player = [[AVPlayer alloc]initWithPlayerItem:_playerItem];
+    }
+    
+    return _player;
+}
+- (AVPlayerItem *)playerItem
+{
+    if (nil == _playerItem) {
+        NSURL *uri = [NSURL URLWithString:self.topic.voiceuri];
+        _playerItem = [[AVPlayerItem alloc]initWithURL:uri];
+    }
+    return _playerItem;
+}
+
 - (void)showVoice
 {
     
 }
-//- (void)showPicture{
-//    MaxShowPrictureController *show = [MaxShowPrictureController new];
-//    show.topic = self.topic;
-//    //当前类是view 没有presentViewController方法
-//    //所以使用rootVC来弹出
-//    UIViewController *root = [UIApplication sharedApplication].keyWindow.rootViewController;
-//    [root presentViewController:show animated:YES completion:nil];
-//}
 
 + (instancetype)voiceView
 {
@@ -95,24 +121,86 @@
         //结束上下文
         UIGraphicsEndImageContext();
     }];
-    
-    //判断gif,但是这样判断不准确,因为只判断了文件名的字符串,这个是可以改动的
-    //最准确的做法是,取出图片的第一个字节,即可判断,SDWebImage就是这样判断的
-    //SDWebImage中NSData+ImageContentType.m文件
-//    NSString *extension = topic.image1.pathExtension;
-    
-//    if (topic.isBigImage) {
-//        //图片超过的部分需要减掉,这个设置是在xib做的,其中的 clip subviews
-//        self.imageView.contentMode = UIViewContentModeScaleAspectFill;
-//        self.seeBigButton.hidden = NO;
-//    }else{
-//        self.imageView.contentMode = UIViewContentModeScaleToFill;
-//        self.seeBigButton.hidden = YES;
-//    }
 }
 
 - (IBAction)playButtonClick:(UIButton *)sender {
+    UIImage *pause = [UIImage imageNamed:@"playButtonPause"];
+    UIImage *play = [UIImage imageNamed:@"playButtonPlay"];
+
+    if (! self.topic.isPlaying) {
+
+        [sender setImage:pause forState:UIControlStateNormal];
+        
+        //播放button滑动到左边
+        if (sender.x > MaxMargin) {
+            [UIView animateWithDuration:0.2 animations:^{
+                CGFloat delta = kWidth / 2 - self.playButton.width / 2 - MaxMargin;
+                self.playButton.transform = CGAffineTransformMakeTranslation(-1*delta, 0);
+            } completion:^(BOOL finished) {
+                [self playAction];
+            }];
+            
+            __weak AVPlayerItem *weakPlayerItem = self.playerItem;
+            __weak MaxTopicVoiceView *weakSelf = self;
+            [self.player addPeriodicTimeObserverForInterval:CMTimeMake(1, 1) queue:dispatch_get_main_queue() usingBlock:^(CMTime time) {
+                CGFloat currenTime = weakPlayerItem.currentTime.value / weakPlayerItem.currentTime.timescale;
+                CGFloat duration = weakPlayerItem.duration.value / weakPlayerItem.duration.timescale;
+                weakSelf.currentProgressLabel.text = [NSString stringWithFormat:@"%02ld:%02ld", (NSInteger)currenTime/60, (NSInteger)currenTime%60];
+                weakSelf.playProgress.value = currenTime/duration;
+            }];
+        }
+        
+        self.topic.isPlaying = YES;
+        
+        [self.player play];
+    }else{
+        [sender setImage:play forState:UIControlStateNormal];
+        self.topic.isPlaying = NO;
+        [self.player pause];
+    }
+}
+- (IBAction)beforeChangeProgress {
+    [self.player pause];
+}
+
+- (IBAction)changePlayProgress:(UISlider *)sender {
+    CGFloat duration = self.playerItem.duration.value / self.playerItem.duration.timescale;
+    [self.player seekToTime:CMTimeMake(duration * sender.value, 1)];
+}
+- (IBAction)afterChangeProgress {
+    [self.player play];
+}
+
+- (void)playAction
+{
+    self.playCountLabel.hidden = YES;
+    self.playVoiceBg.hidden = NO;
     
+    CGFloat delta = kWidth / 2 - self.playButton.width / 2 - MaxMargin;
+    self.playButton.transform = CGAffineTransformMakeTranslation(-1*delta, 0);
+    
+}
+- (void)playEnd
+{
+    self.playCountLabel.hidden = NO;
+    self.playVoiceBg.hidden = YES;
+    
+    self.playButton.transform = CGAffineTransformIdentity;
+}
+
+- (void)playerDidEnd
+{
+    if (self.playButton.x <= MaxMargin) {
+        [UIView animateWithDuration:0.5 animations:^{
+            self.playButton.transform = CGAffineTransformIdentity;
+        }];
+    }
+    [self playEnd];
+    [self.playButton setImage:[UIImage imageNamed:@"playButtonPlay"] forState:UIControlStateNormal];
+    self.playProgress.value = 0;
+    [self.player seekToTime:CMTimeMake(0, 1)];
+    
+    self.topic.isPlaying = NO;
 }
 
 @end

@@ -25,9 +25,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *commentButton;
 @property (weak, nonatomic) IBOutlet UILabel *text_label;
 
-@property (weak, nonatomic) MaxTopicPictureView *pictureView;
-@property (weak, nonatomic) MaxTopicVoiceView *voiceView;
-@property (weak, nonatomic) MaxTopicVideoView *videoView;
+
 
 @end
 

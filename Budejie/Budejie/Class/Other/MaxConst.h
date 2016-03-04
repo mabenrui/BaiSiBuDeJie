@@ -32,3 +32,7 @@ UIKIT_EXTERN CGFloat const MaxTopicCellHeaderHeight;
 UIKIT_EXTERN CGFloat const MaxTopicPictureMaxH;
 /** 精华cell 图片超过最大高度后的自动显示的高度*/
 UIKIT_EXTERN CGFloat const MaxTopicPictureDefaultH;
+
+/** 用户模型性别 */
+UIKIT_EXTERN NSString * const MaxUserSexMale;
+UIKIT_EXTERN NSString * const MaxUserSexFemale;

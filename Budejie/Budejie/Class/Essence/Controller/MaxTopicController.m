@@ -9,10 +9,12 @@
 #import "MaxTopicController.h"
 #import "MaxTopicModel.h"
 #import "MaxTopicCell.h"
+#import "MaxTopicVoiceView.h"
 #import <AFNetworking.h>
 #import <MJExtension.h>
 #import <MJRefresh.h>
 #import <UIImageView+WebCache.h>
+#import <AVFoundation/AVFoundation.h>
 
 @interface MaxTopicController ()
 
@@ -22,6 +24,9 @@
 @property (nonatomic, assign) NSInteger page;
 //maxtime 加载分页需要这个参数
 @property (nonatomic, copy) NSString *maxtime;
+
+//正在播放音乐的player
+@property (nonatomic, weak) AVPlayer *currentVoicePlayer;
 
 @end
 
@@ -83,7 +88,7 @@ static NSString *const topic = @"topic";
     } success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *responseObject) {
         //保存maxtime
         self.maxtime = responseObject[@"info"][@"maxtime"];
-        
+//        LLog(@"%@", responseObject);
         NSArray *topics = [MaxTopicModel mj_objectArrayWithKeyValuesArray:responseObject[@"list"]];
         [self.topics removeAllObjects];
         [self.topics addObjectsFromArray:topics];
@@ -152,6 +157,15 @@ static NSString *const topic = @"topic";
     
     cell.topic = model;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    if (cell.topic.type == MaxTopicTypeVoice) {
+        if (cell.topic.isPlaying == YES) {
+            [cell.voiceView playAction];
+            self.currentVoicePlayer = cell.voiceView.player;
+        }else{
+            [cell.voiceView playEnd];
+        }
+    }
     
     return cell;
 }

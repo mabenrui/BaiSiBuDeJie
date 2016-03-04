@@ -12,6 +12,8 @@
 		508C58771C843AC9002F5198 /* MaxTopicVoiceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 508C58761C843AC9002F5198 /* MaxTopicVoiceView.xib */; };
 		508C587A1C845E3D002F5198 /* MaxTopicVideoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 508C58791C845E3D002F5198 /* MaxTopicVideoView.m */; };
 		508C587C1C845E4A002F5198 /* MaxTopicVideoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 508C587B1C845E4A002F5198 /* MaxTopicVideoView.xib */; };
+		508C587F1C848998002F5198 /* MaxUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 508C587E1C848998002F5198 /* MaxUser.m */; };
+		508C58821C848A9B002F5198 /* MaxComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 508C58811C848A9B002F5198 /* MaxComment.m */; };
 		509FA3031C814F530005ACDA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 509FA3021C814F530005ACDA /* main.m */; };
 		509FA3061C814F530005ACDA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 509FA3051C814F530005ACDA /* AppDelegate.m */; };
 		509FA30E1C814F530005ACDA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 509FA30D1C814F530005ACDA /* Assets.xcassets */; };
@@ -65,6 +67,10 @@
 		508C58781C845E3D002F5198 /* MaxTopicVideoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaxTopicVideoView.h; sourceTree = "<group>"; };
 		508C58791C845E3D002F5198 /* MaxTopicVideoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaxTopicVideoView.m; sourceTree = "<group>"; };
 		508C587B1C845E4A002F5198 /* MaxTopicVideoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MaxTopicVideoView.xib; sourceTree = "<group>"; };
+		508C587D1C848998002F5198 /* MaxUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaxUser.h; sourceTree = "<group>"; };
+		508C587E1C848998002F5198 /* MaxUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaxUser.m; sourceTree = "<group>"; };
+		508C58801C848A9B002F5198 /* MaxComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaxComment.h; sourceTree = "<group>"; };
+		508C58811C848A9B002F5198 /* MaxComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaxComment.m; sourceTree = "<group>"; };
 		509FA2FE1C814F530005ACDA /* Budejie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Budejie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		509FA3021C814F530005ACDA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		509FA3041C814F530005ACDA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -269,6 +275,10 @@
 				509FA32E1C8152630005ACDA /* MaxRecommendTagModel.m */,
 				509FA32F1C8152630005ACDA /* MaxTopicModel.h */,
 				509FA3301C8152630005ACDA /* MaxTopicModel.m */,
+				508C587D1C848998002F5198 /* MaxUser.h */,
+				508C587E1C848998002F5198 /* MaxUser.m */,
+				508C58801C848A9B002F5198 /* MaxComment.h */,
+				508C58811C848A9B002F5198 /* MaxComment.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -504,6 +514,11 @@
 				TargetAttributes = {
 					509FA2FD1C814F530005ACDA = {
 						CreatedOnToolsVersion = 7.2.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -606,6 +621,7 @@
 				509FA3841C8152630005ACDA /* MaxRecommendViewController.m in Sources */,
 				509FA3801C8152630005ACDA /* MaxFriendTrendsViewController.m in Sources */,
 				509FA37A1C8152630005ACDA /* MaxRecommendTagCell.m in Sources */,
+				508C58821C848A9B002F5198 /* MaxComment.m in Sources */,
 				50A517D51C83D138001E7663 /* MaxPushGuideView.m in Sources */,
 				508C58751C843ABF002F5198 /* MaxTopicVoiceView.m in Sources */,
 				509FA3711C8152630005ACDA /* UIBarButtonItem+Extension.m in Sources */,
@@ -631,6 +647,7 @@
 				50A517D21C83D138001E7663 /* MaxPublishView.m in Sources */,
 				509FA3791C8152630005ACDA /* MaxTopicModel.m in Sources */,
 				50A517D41C83D138001E7663 /* MaxTabBarController.m in Sources */,
+				508C587F1C848998002F5198 /* MaxUser.m in Sources */,
 				509FA3741C8152630005ACDA /* MaxRecommendTagController.m in Sources */,
 				509FA3751C8152630005ACDA /* MaxShowPrictureController.m in Sources */,
 				509FA3821C8152630005ACDA /* MaxLoginRegisterController.m in Sources */,
@@ -734,6 +751,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mabenrui.Budejie;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "db8adf1c-847a-45ee-ba62-238b4410304d";
 			};
 			name = Debug;
 		};
@@ -749,6 +767,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mabenrui.Budejie;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "db8adf1c-847a-45ee-ba62-238b4410304d";
 			};
 			name = Release;
 		};

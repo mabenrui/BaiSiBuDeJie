@@ -19,6 +19,11 @@
 
 @implementation MaxTopicModel
 
++ (NSDictionary *)mj_objectClassInArray
+{
+    return @{@"top_cmt":@"MaxComment"};
+}
+
 - (CGFloat)rowHeight{
     
     if (_rowHeight == 0) {

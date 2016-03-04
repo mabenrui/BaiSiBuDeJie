@@ -8,10 +8,17 @@
 
 #import <UIKit/UIKit.h>
 @class MaxTopicModel;
+@class MaxTopicPictureView;
+@class MaxTopicVideoView;
+@class MaxTopicVoiceView;
 
 @interface MaxTopicCell : UITableViewCell
 
 /** 帖子model*/
 @property (nonatomic, strong) MaxTopicModel *topic;
+
+@property (weak, nonatomic) MaxTopicPictureView *pictureView;
+@property (weak, nonatomic) MaxTopicVoiceView *voiceView;
+@property (weak, nonatomic) MaxTopicVideoView *videoView;
 
 @end

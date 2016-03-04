@@ -31,7 +31,7 @@
     self.progressView.roundedCorners = 2;
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(showPicture)];
-//    [self addGestureRecognizer:tap];
+    [self addGestureRecognizer:tap];
 }
 - (void)showPicture{
     MaxShowPrictureController *show = [MaxShowPrictureController new];
