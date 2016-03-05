@@ -59,9 +59,9 @@
                                 <constraint firstAttribute="height" constant="5" id="WNb-IR-kI0"/>
                             </constraints>
                             <connections>
-                                <action selector="afterChangeProgress" destination="iN0-l3-epB" eventType="touchUpOutside" id="T3h-RC-V4f"/>
-                                <action selector="afterChangeProgress" destination="iN0-l3-epB" eventType="touchUpInside" id="WZ2-1m-wH6"/>
-                                <action selector="beforeChangeProgress" destination="iN0-l3-epB" eventType="touchDown" id="R7L-Vy-PuE"/>
+                                <action selector="afterChangeProgress:" destination="iN0-l3-epB" eventType="touchUpInside" id="PlQ-wY-gMW"/>
+                                <action selector="afterChangeProgress:" destination="iN0-l3-epB" eventType="touchUpOutside" id="ZY9-td-ytQ"/>
+                                <action selector="beforeChangeProgress:" destination="iN0-l3-epB" eventType="touchDown" id="3pI-YV-ImW"/>
                                 <action selector="changePlayProgress:" destination="iN0-l3-epB" eventType="valueChanged" id="hIP-QS-pSK"/>
                             </connections>
                         </slider>
@@ -122,7 +122,7 @@
                 <outlet property="playVoiceBg" destination="oPF-Tk-bes" id="ULY-my-YCM"/>
                 <outlet property="progressView" destination="Hau-07-NOT" id="olB-aA-4On"/>
             </connections>
-            <point key="canvasLocation" x="361" y="383"/>
+            <point key="canvasLocation" x="443" y="361"/>
         </view>
     </objects>
     <resources>

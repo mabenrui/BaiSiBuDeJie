@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *playCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *playTimeLabel;
 
+@property (strong, nonatomic) AVPlayerItem *playerItem;
 
 @end
 
@@ -36,14 +37,7 @@
 {
     
 }
-//- (void)showPicture{
-//    MaxShowPrictureController *show = [MaxShowPrictureController new];
-//    show.topic = self.topic;
-//    //当前类是view 没有presentViewController方法
-//    //所以使用rootVC来弹出
-//    UIViewController *root = [UIApplication sharedApplication].keyWindow.rootViewController;
-//    [root presentViewController:show animated:YES completion:nil];
-//}
+
 
 + (instancetype)videoView
 {
@@ -51,11 +45,26 @@
     return [[[NSBundle mainBundle]loadNibNamed:NSStringFromClass(self) owner:nil options:nil]lastObject];
 }
 
+- (void)createLayer:(AVPlayer *)player
+{
+    AVPlayerLayer *layer = [AVPlayerLayer playerLayerWithPlayer:self.player];
+//    NSLog(@"%@", NSStringFromCGRect(self.imageView.frame));
+//    NSLog(@"%@", NSStringFromCGRect(self.frame));
+    layer.frame = self.imageView.bounds;
+    
+    
+    [self.imageView.layer addSublayer:layer];
+}
+
 - (void)setTopic:(MaxTopicModel *)topic{
     _topic = topic;
     
+    //播发器没有使用懒加载,因为在cell复用时,会出现同样的播放内容
+    self.playerItem = [[AVPlayerItem alloc]initWithURL:[NSURL URLWithString:topic.videouri]];
+    self.player = [[AVPlayer alloc]initWithPlayerItem:self.playerItem];
+    
     self.playCountLabel.text = [NSString stringWithFormat:@"%ld播放", topic.playcount];
-    self.playTimeLabel.text = [NSString stringWithFormat:@"%02ld:%02ld", topic.voicetime/60, topic.voicetime%60];
+    self.playTimeLabel.text = [NSString stringWithFormat:@"%02ld:%02ld", topic.videotime/60, topic.videotime%60];
     
     //立马显示最新的进度值
     //cell重用时,网络卡,cell可能一直显示的是上次的进度
@@ -79,24 +88,45 @@
     } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         self.progressView.hidden = YES;
     }];
-    
-    //判断gif,但是这样判断不准确,因为只判断了文件名的字符串,这个是可以改动的
-    //最准确的做法是,取出图片的第一个字节,即可判断,SDWebImage就是这样判断的
-    //SDWebImage中NSData+ImageContentType.m文件
-    //    NSString *extension = topic.image1.pathExtension;
-    
-    //    if (topic.isBigImage) {
-    //        //图片超过的部分需要减掉,这个设置是在xib做的,其中的 clip subviews
-    //        self.imageView.contentMode = UIViewContentModeScaleAspectFill;
-    //        self.seeBigButton.hidden = NO;
-    //    }else{
-    //        self.imageView.contentMode = UIViewContentModeScaleToFill;
-    //        self.seeBigButton.hidden = YES;
-    //    }
 }
 
 
 - (IBAction)playButtonClick:(UIButton *)sender {
+//    UIImage *pause = [UIImage imageNamed:@"playButtonPause"];
+//    UIImage *play = [UIImage imageNamed:@"playButtonPlay"];
+    
+    if (! self.topic.isActive) {
+        [self createLayer:self.player];
+//        if ([_delegate respondsToSelector:@selector(topicVoiceViewDidActive:)]) {
+//            [_delegate topicVoiceViewDidActive:self.topic];
+//        }
+        
+//        [sender setImage:pause forState:UIControlStateNormal];
+        
+        //播放button滑动到左边
+        if (sender.x > MaxMargin) {
+            [UIView animateWithDuration:0.2 animations:^{
+                CGFloat delta = kWidth / 2 - self.playButton.width / 2 - MaxMargin;
+                self.playButton.transform = CGAffineTransformMakeTranslation(-1*delta, 0);
+            } completion:^(BOOL finished) {
+//                [self playAction];
+            }];
+        }
+        
+//        __weak AVPlayerItem *weakPlayerItem = self.playerItem;
+//        __weak MaxTopicVideoView *weakSelf = self;
+//        [self.player addPeriodicTimeObserverForInterval:CMTimeMake(1, 1) queue:dispatch_get_main_queue() usingBlock:^(CMTime time) {
+//            CGFloat currenTime = weakPlayerItem.currentTime.value / weakPlayerItem.currentTime.timescale;
+//            CGFloat duration = weakPlayerItem.duration.value / weakPlayerItem.duration.timescale;
+//            weakSelf.currentProgressLabel.text = [NSString stringWithFormat:@"%02ld:%02ld", (NSInteger)currenTime/60, (NSInteger)currenTime%60];
+//            weakSelf.playProgress.value = currenTime/duration;
+//        }];
+        
+        self.topic.isVideoPlaying = YES;
+        self.topic.isActive = YES;
+        
+        [self.player play];
+    }
 }
 
 @end

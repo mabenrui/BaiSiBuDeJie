@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <AVFoundation/AVFoundation.h>
 @class MaxTopicVoiceView;
 @class MaxTopicVideoView;
 
@@ -63,6 +64,8 @@
 @property (nonatomic, copy) NSString *bimageuri;
 /** 正在播放*/
 @property (nonatomic, assign) BOOL isActive;
+/** 播发器*/
+@property (nonatomic, weak) AVPlayer *player;
 
 /**
  * 声音

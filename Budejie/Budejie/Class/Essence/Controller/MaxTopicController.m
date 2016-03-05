@@ -25,9 +25,16 @@
 //maxtime 加载分页需要这个参数
 @property (nonatomic, copy) NSString *maxtime;
 
-//正处于active的topic
-@property (nonatomic, weak) MaxTopicModel *currentTopic;
+//正处于active的voiceView
+@property (nonatomic, weak) MaxTopicVoiceView *activeVoiceView;
+//active的topic
+@property (nonatomic, weak) MaxTopicModel *activeTopic;
 
+@property (nonatomic, strong) AVPlayer *player;
+@property (nonatomic, strong) AVPlayerItem *playerItem;
+
+//音乐播放进度的监控,用来移除监控
+@property (nonatomic, strong) id observer;
 
 @end
 
@@ -156,20 +163,21 @@ static NSString *const topic = @"topic";
     MaxTopicCell *cell = [tableView dequeueReusableCellWithIdentifier:topic];
     
     MaxTopicModel *model = self.topics[indexPath.row];
+
     
-    cell.topic = model;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    if (cell.topic.type == MaxTopicTypeVoice) {
+    if (model.type == MaxTopicTypeVoice) {
         cell.voiceView.delegate = self;
         
-        if (cell.topic.isActive == YES) {
+        if (model.isActive == YES) {
             [cell.voiceView playAction];
-
         }else{
             [cell.voiceView playEnd];
         }
     }
+    
+    cell.topic = model;
     
     return cell;
 }
@@ -181,13 +189,108 @@ static NSString *const topic = @"topic";
     return topic.rowHeight;
 }
 
-- (void)topicVoiceViewDidActive:(MaxTopicModel *)topic{
-    
-    if (self.currentTopic) {
-        self.currentTopic.isActive = NO;
-        self.currentTopic.isVoicePlaying = NO;
-    }
-    
-    self.currentTopic = topic;
+- (AVPlayer *)createPlayer:(NSString *)str
+{
+    NSURL *uri = [NSURL URLWithString:str];
+    self.playerItem = [[AVPlayerItem alloc]initWithURL:uri];
+    self.player = [[AVPlayer alloc]initWithPlayerItem:self.playerItem];
+
+    return self.player;
 }
+
+#pragma mark  ========== MaxTopicVoiceViewDelegate
+
+- (void)voiceView:(MaxTopicVoiceView *)voiceView clickPlayButton:(UIButton *)button{
+    if (self.activeVoiceView && self.activeVoiceView != voiceView) {
+        [self.activeVoiceView playerDidEnd];
+    }else if (self.activeVoiceView == voiceView){
+        self.activeTopic.isActive = NO;
+    }
+    self.activeTopic = voiceView.topic;
+    self.activeVoiceView = voiceView;
+    
+    UIImage *pause = [UIImage imageNamed:@"playButtonPause"];
+    UIImage *play = [UIImage imageNamed:@"playButtonPlay"];
+    
+    if (! voiceView.topic.isActive) {
+        if (self.observer) {
+            [self.player pause];
+            [self.player removeTimeObserver:self.observer];
+        }
+        
+        self.player = [self createPlayer:voiceView.topic.voiceuri];
+        
+        [button setImage:pause forState:UIControlStateNormal];
+        
+        //播放button滑动到左边
+        if (button.x > MaxMargin) {
+            [UIView animateWithDuration:0.2 animations:^{
+                CGFloat delta = kWidth / 2 - button.width / 2 - MaxMargin;
+                button.transform = CGAffineTransformMakeTranslation(-1*delta, 0);
+            } completion:^(BOOL finished) {
+                [voiceView playAction];
+            }];
+        }
+        __weak MaxTopicController *weak = self;
+        __weak MaxTopicVoiceView *weakVoice = voiceView;
+        self.observer = [self.player addPeriodicTimeObserverForInterval:CMTimeMake(1, 1) queue:dispatch_get_main_queue() usingBlock:^(CMTime time) {
+            CGFloat currenTime = weak.playerItem.currentTime.value / weak.playerItem.currentTime.timescale;
+            CGFloat duration = weak.playerItem.duration.value / weak.playerItem.duration.timescale;
+            
+            NSString *str = [NSString stringWithFormat:@"%02ld:%02ld", (NSInteger)currenTime/60, (NSInteger)currenTime%60];
+            [weakVoice changeProgressString:str];
+            [weakVoice changeProgressValue:currenTime/duration];
+        }];
+        
+        voiceView.topic.isVoicePlaying = YES;
+        voiceView.topic.isActive = YES;
+        
+        [self.player play];
+    }else if (voiceView.topic.isVoicePlaying){
+        //暂停音乐
+        [self.player pause];
+        voiceView.topic.isVoicePlaying = NO;
+        
+        [button setImage:play forState:UIControlStateNormal];
+    }else if (! voiceView.topic.isVoicePlaying){
+        //play音乐
+        [self.player play];
+        voiceView.topic.isVoicePlaying = YES;
+        
+        [button setImage:pause forState:UIControlStateNormal];
+    }
+}
+
+- (void)voiceView:(MaxTopicVoiceView *)voiceView beforeChangeProgress:(UISlider *)sender{
+    [self.player pause];
+}
+- (void)voiceView:(MaxTopicVoiceView *)voiceView changePlayProgress:(UISlider *)sender{
+    CGFloat duration = self.playerItem.duration.value / self.playerItem.duration.timescale;
+    [self.player seekToTime:CMTimeMake(duration * sender.value, 1)];
+}
+- (void)voiceView:(MaxTopicVoiceView *)voiceView afterChangeProgress:(UISlider *)sender{
+    [self.player play];
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @end

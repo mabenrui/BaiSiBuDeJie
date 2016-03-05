@@ -9,10 +9,15 @@
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
 @class MaxTopicModel;
+@class MaxTopicVoiceView;
 
 @protocol MaxTopicVoiceViewDelegate <NSObject>
 
-- (void)topicVoiceViewDidActive:(MaxTopicModel *)topic;
+- (void)voiceView:(MaxTopicVoiceView *)voiceView clickPlayButton:(UIButton *)button;
+
+- (void)voiceView:(MaxTopicVoiceView *)voiceView beforeChangeProgress:(UISlider *)sender;
+- (void)voiceView:(MaxTopicVoiceView *)voiceView changePlayProgress:(UISlider *)sender;
+- (void)voiceView:(MaxTopicVoiceView *)voiceView afterChangeProgress:(UISlider *)sender;
 
 @end
 
@@ -20,7 +25,7 @@
 
 /** model*/
 @property (nonatomic, weak) MaxTopicModel *topic;
-@property (nonatomic, strong) AVPlayer *player;
+
 /** 代理*/
 @property (nonatomic, weak) id<MaxTopicVoiceViewDelegate> delegate;
 
@@ -29,5 +34,8 @@
 - (void)playAction;
 - (void)playEnd;
 - (void)playerDidEnd;
+
+- (void)changeProgressString:(NSString *)str;
+- (void)changeProgressValue:(CGFloat)value;
 
 @end

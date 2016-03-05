@@ -7,12 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AVFoundation/AVFoundation.h>
 @class MaxTopicModel;
 
 @interface MaxTopicVideoView : UIView
 
 /** model*/
 @property (nonatomic, weak) MaxTopicModel *topic;
+/** 播发器*/
+@property (nonatomic, strong) AVPlayer *player;
 
 + (instancetype)videoView;
 

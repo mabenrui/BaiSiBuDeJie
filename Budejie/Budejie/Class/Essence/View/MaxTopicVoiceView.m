@@ -22,8 +22,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *currentProgressLabel;
 @property (weak, nonatomic) IBOutlet UIView *playVoiceBg;
 
-@property (strong, nonatomic) AVPlayerItem *playerItem;
-
 @end
 
 @implementation MaxTopicVoiceView
@@ -40,6 +38,7 @@
     
     //音乐播放完毕的通知
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(playerDidEnd) name:AVPlayerItemDidPlayToEndTimeNotification object:nil];
+    
 }
 
 - (void)showVoice
@@ -55,11 +54,7 @@
 
 - (void)setTopic:(MaxTopicModel *)topic{
     _topic = topic;
-    
-    //播发器没有使用懒加载,因为在cell复用时,会出现同样的播放内容
-    self.playerItem = [[AVPlayerItem alloc]initWithURL:[NSURL URLWithString:topic.voiceuri]];
-    self.player = [[AVPlayer alloc]initWithPlayerItem:self.playerItem];
-    
+
     self.playCountLabel.text = [NSString stringWithFormat:@"%ld播放", topic.playcount];
     self.playTimeLabel.text = [NSString stringWithFormat:@"%02ld:%02ld", topic.voicetime/60, topic.voicetime%60];
     
@@ -84,69 +79,32 @@
         
     } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         self.progressView.hidden = YES;
-
     }];
 }
 
 - (IBAction)playButtonClick:(UIButton *)sender {
-    UIImage *pause = [UIImage imageNamed:@"playButtonPause"];
-    UIImage *play = [UIImage imageNamed:@"playButtonPlay"];
     
-    if (! self.topic.isActive) {
-        
-        if ([_delegate respondsToSelector:@selector(topicVoiceViewDidActive:)]) {
-            [_delegate topicVoiceViewDidActive:self.topic];
-        }
-
-        [sender setImage:pause forState:UIControlStateNormal];
-        
-        //播放button滑动到左边
-        if (sender.x > MaxMargin) {
-            [UIView animateWithDuration:0.2 animations:^{
-                CGFloat delta = kWidth / 2 - self.playButton.width / 2 - MaxMargin;
-                self.playButton.transform = CGAffineTransformMakeTranslation(-1*delta, 0);
-            } completion:^(BOOL finished) {
-                [self playAction];
-            }];
-        }
-        
-        __weak AVPlayerItem *weakPlayerItem = self.playerItem;
-        __weak MaxTopicVoiceView *weakSelf = self;
-        [self.player addPeriodicTimeObserverForInterval:CMTimeMake(1, 1) queue:dispatch_get_main_queue() usingBlock:^(CMTime time) {
-            CGFloat currenTime = weakPlayerItem.currentTime.value / weakPlayerItem.currentTime.timescale;
-            CGFloat duration = weakPlayerItem.duration.value / weakPlayerItem.duration.timescale;
-            weakSelf.currentProgressLabel.text = [NSString stringWithFormat:@"%02ld:%02ld", (NSInteger)currenTime/60, (NSInteger)currenTime%60];
-            weakSelf.playProgress.value = currenTime/duration;
-        }];
-        
-        self.topic.isVoicePlaying = YES;
-        self.topic.isActive = YES;
-        
-        [self.player play];
-    }else if (self.topic.isVoicePlaying){
-        //暂停音乐
-        [self.player pause];
-        self.topic.isVoicePlaying = NO;
-        
-        [self.playButton setImage:play forState:UIControlStateNormal];
-    }else if (! self.topic.isVoicePlaying){
-        //play音乐
-        [self.player play];
-        self.topic.isVoicePlaying = YES;
-        
-        [self.playButton setImage:pause forState:UIControlStateNormal];
+    if ([_delegate respondsToSelector:@selector(voiceView:clickPlayButton:)]) {
+        [_delegate voiceView:self clickPlayButton:sender];
     }
+
 }
-- (IBAction)beforeChangeProgress {
-    [self.player pause];
+- (IBAction)beforeChangeProgress:(UISlider *)sender {
+    if ([_delegate respondsToSelector:@selector(voiceView:beforeChangeProgress:)]) {
+        [_delegate voiceView:self beforeChangeProgress:sender];
+    }
 }
 
 - (IBAction)changePlayProgress:(UISlider *)sender {
-    CGFloat duration = self.playerItem.duration.value / self.playerItem.duration.timescale;
-    [self.player seekToTime:CMTimeMake(duration * sender.value, 1)];
+    
+    if ([_delegate respondsToSelector:@selector(voiceView:changePlayProgress:)]) {
+        [_delegate voiceView:self changePlayProgress:sender];
+    }
 }
-- (IBAction)afterChangeProgress {
-    [self.player play];
+- (IBAction)afterChangeProgress:(UISlider *)sender {
+    if ([_delegate respondsToSelector:@selector(voiceView:afterChangeProgress:)]) {
+        [_delegate voiceView:self afterChangeProgress:sender];
+    }
 }
 
 //播放开始时,视图处理
@@ -177,11 +135,18 @@
     [self.playButton setImage:[UIImage imageNamed:@"playButtonPlay"] forState:UIControlStateNormal];
     //播放进度初始化
     self.playProgress.value = 0;
-    //音乐初始化
-    [self.player seekToTime:CMTimeMake(0, 1)];
     
     self.topic.isVoicePlaying = NO;
     self.topic.isActive = NO;
+}
+
+- (void)changeProgressString:(NSString *)str
+{
+    self.currentProgressLabel.text = str;
+}
+- (void)changeProgressValue:(CGFloat)value
+{
+    self.playProgress.value = value;
 }
 
 @end
