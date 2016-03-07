@@ -83,10 +83,17 @@ static NSString *const topic = @"topic";
     self.tableView.mj_header.automaticallyChangeAlpha = YES;
     [self.tableView.mj_header beginRefreshing];
 }
+
+#pragma mark  ========== 下拉刷新
 - (void)loadNewTopics{
     
     //结束上啦
     [self.tableView.mj_footer endRefreshing];
+    
+    //重置播发器
+    [self.player pause];
+    self.player = nil;
+    self.playerItem = nil;
     
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"a"] = @"list";
@@ -117,6 +124,7 @@ static NSString *const topic = @"topic";
     }];
     
 }
+#pragma mark  ========== 上啦加载
 - (void)loadMoreTopics{
     //结束下拉
     [self.tableView.mj_header endRefreshing];
@@ -198,7 +206,7 @@ static NSString *const topic = @"topic";
     return self.player;
 }
 
-#pragma mark  ========== MaxTopicVoiceViewDelegate
+#pragma mark  ========== MaxTopicVoiceViewDelegate 音乐代理
 
 - (void)voiceView:(MaxTopicVoiceView *)voiceView clickPlayButton:(UIButton *)button{
     if (self.activeVoiceView && self.activeVoiceView != voiceView) {
