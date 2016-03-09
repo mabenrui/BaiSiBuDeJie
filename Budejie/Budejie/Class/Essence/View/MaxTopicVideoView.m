@@ -92,41 +92,7 @@
 
 
 - (IBAction)playButtonClick:(UIButton *)sender {
-//    UIImage *pause = [UIImage imageNamed:@"playButtonPause"];
-//    UIImage *play = [UIImage imageNamed:@"playButtonPlay"];
-    
-    if (! self.topic.isActive) {
-        [self createLayer:self.player];
-//        if ([_delegate respondsToSelector:@selector(topicVoiceViewDidActive:)]) {
-//            [_delegate topicVoiceViewDidActive:self.topic];
-//        }
-        
-//        [sender setImage:pause forState:UIControlStateNormal];
-        
-        //播放button滑动到左边
-        if (sender.x > MaxMargin) {
-            [UIView animateWithDuration:0.2 animations:^{
-                CGFloat delta = kWidth / 2 - self.playButton.width / 2 - MaxMargin;
-                self.playButton.transform = CGAffineTransformMakeTranslation(-1*delta, 0);
-            } completion:^(BOOL finished) {
-//                [self playAction];
-            }];
-        }
-        
-//        __weak AVPlayerItem *weakPlayerItem = self.playerItem;
-//        __weak MaxTopicVideoView *weakSelf = self;
-//        [self.player addPeriodicTimeObserverForInterval:CMTimeMake(1, 1) queue:dispatch_get_main_queue() usingBlock:^(CMTime time) {
-//            CGFloat currenTime = weakPlayerItem.currentTime.value / weakPlayerItem.currentTime.timescale;
-//            CGFloat duration = weakPlayerItem.duration.value / weakPlayerItem.duration.timescale;
-//            weakSelf.currentProgressLabel.text = [NSString stringWithFormat:@"%02ld:%02ld", (NSInteger)currenTime/60, (NSInteger)currenTime%60];
-//            weakSelf.playProgress.value = currenTime/duration;
-//        }];
-        
-        self.topic.isVideoPlaying = YES;
-        self.topic.isActive = YES;
-        
-        [self.player play];
-    }
+
 }
 
 @end

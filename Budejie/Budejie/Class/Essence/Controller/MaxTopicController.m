@@ -90,10 +90,13 @@ static NSString *const topic = @"topic";
     //结束上啦
     [self.tableView.mj_footer endRefreshing];
     
-    //重置播发器
+    //刷新时,释放播发器的内存
+    //一定要先remove后置nil
     [self.player pause];
-    self.player = nil;
-    self.playerItem = nil;
+    if (self.observer) {
+        [self.player removeTimeObserver:self.observer];
+        self.player = nil;
+    }
     
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"a"] = @"list";
@@ -133,7 +136,7 @@ static NSString *const topic = @"topic";
     params[@"a"] = @"list";
     params[@"c"] = @"data";
     params[@"type"] = @"29";
-    
+
     NSInteger page = self.page + 1;
     params[@"page"] = @(page);
     params[@"maxtime"] = self.maxtime;
@@ -178,11 +181,7 @@ static NSString *const topic = @"topic";
     if (model.type == MaxTopicTypeVoice) {
         cell.voiceView.delegate = self;
         
-        if (model.isActive == YES) {
-            [cell.voiceView playAction];
-        }else{
-            [cell.voiceView playEnd];
-        }
+        [cell.voiceView showVoiceInActive:model.isActive];
     }
     
     cell.topic = model;
@@ -209,36 +208,32 @@ static NSString *const topic = @"topic";
 #pragma mark  ========== MaxTopicVoiceViewDelegate 音乐代理
 
 - (void)voiceView:(MaxTopicVoiceView *)voiceView clickPlayButton:(UIButton *)button{
+    UIImage *pause = [UIImage imageNamed:@"playButtonPause"];
+    UIImage *play = [UIImage imageNamed:@"playButtonPlay"];
+    
+    //处理是否是活动状态的voiceView和对应的topic
     if (self.activeVoiceView && self.activeVoiceView != voiceView) {
         [self.activeVoiceView playerDidEnd];
-    }else if (self.activeVoiceView == voiceView){
+    }else if (self.activeVoiceView == voiceView && self.activeTopic != voiceView.topic){
         self.activeTopic.isActive = NO;
     }
     self.activeTopic = voiceView.topic;
     self.activeVoiceView = voiceView;
     
-    UIImage *pause = [UIImage imageNamed:@"playButtonPause"];
-    UIImage *play = [UIImage imageNamed:@"playButtonPlay"];
-    
-    if (! voiceView.topic.isActive) {
+    BOOL isActive = voiceView.topic.isActive;
+    if (! isActive) {
+        //remove上一个监控
         if (self.observer) {
             [self.player pause];
             [self.player removeTimeObserver:self.observer];
         }
-        
         self.player = [self createPlayer:voiceView.topic.voiceuri];
         
+        //ui显示
+        [voiceView showVoiceInActive:YES];
         [button setImage:pause forState:UIControlStateNormal];
         
-        //播放button滑动到左边
-        if (button.x > MaxMargin) {
-            [UIView animateWithDuration:0.2 animations:^{
-                CGFloat delta = kWidth / 2 - button.width / 2 - MaxMargin;
-                button.transform = CGAffineTransformMakeTranslation(-1*delta, 0);
-            } completion:^(BOOL finished) {
-                [voiceView playAction];
-            }];
-        }
+        //监控进度,weak防循环引用
         __weak MaxTopicController *weak = self;
         __weak MaxTopicVoiceView *weakVoice = voiceView;
         self.observer = [self.player addPeriodicTimeObserverForInterval:CMTimeMake(1, 1) queue:dispatch_get_main_queue() usingBlock:^(CMTime time) {

@@ -107,29 +107,32 @@
     }
 }
 
-//播放开始时,视图处理
-- (void)playAction
+//voice的ui处理
+- (void)showVoiceInActive:(BOOL)isActive
 {
-    self.playCountLabel.hidden = YES;
-    self.playVoiceBg.hidden = NO;
+    UIImage *currentImage = nil;
+    if (isActive) {
+        currentImage = [UIImage imageNamed:@"playButtonPause"];
+        
+        CGFloat delta = kWidth / 2 - self.playButton.width / 2 - MaxMargin;
+        self.playButton.transform = CGAffineTransformMakeTranslation(-1*delta, 0);
+    }else{
+        currentImage = [UIImage imageNamed:@"playButtonPlay"];
+        
+        self.playButton.transform = CGAffineTransformIdentity;
+    }
     
-    CGFloat delta = kWidth / 2 - self.playButton.width / 2 - MaxMargin;
-    self.playButton.transform = CGAffineTransformMakeTranslation(-1*delta, 0);
+    [self.playButton setImage:currentImage forState:UIControlStateNormal];
     
-}
-//播放完毕后视图处理
-- (void)playEnd
-{
-    self.playCountLabel.hidden = NO;
-    self.playVoiceBg.hidden = YES;
+    self.playCountLabel.hidden = isActive;
+    self.playVoiceBg.hidden = ! isActive;
     
-    self.playButton.transform = CGAffineTransformIdentity;
 }
 
 //播放完毕
 - (void)playerDidEnd
 {
-    [self playEnd];
+    [self showVoiceInActive:NO];
     
     //button的图标
     [self.playButton setImage:[UIImage imageNamed:@"playButtonPlay"] forState:UIControlStateNormal];

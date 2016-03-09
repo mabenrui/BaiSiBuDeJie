@@ -31,8 +31,7 @@
 
 + (instancetype)voiceView;
 
-- (void)playAction;
-- (void)playEnd;
+- (void)showVoiceInActive:(BOOL)isActive;
 - (void)playerDidEnd;
 
 - (void)changeProgressString:(NSString *)str;
